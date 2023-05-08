@@ -1,0 +1,9 @@
+[character]
+format = " "
+
+[container]
+symbol = ""
+format = '[$symbol \[Dev\]]($style)'
+
+[sudo]
+disabled = false
