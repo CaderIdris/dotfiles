@@ -1,9 +1,9 @@
 figlet "Cymru am byth!"
 
-[[ -r ~/Repos/znap/znap.zsh ]] ||
+[[ -r ~/.zsh/.znap/znap.zsh ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
-source ~/Repos/znap/znap.zsh
+        https://github.com/marlonrichert/zsh-snap.git ~/.zsh/.znap
+source ~/.zsh/.znap/znap.zsh
 
 export EDITOR='nvim'
 
@@ -15,6 +15,10 @@ alias fd="fdfind"
 alias flatup="flatpak update"
 
 alias bsync="browser-sync start --server --files --no-open"
+
+alias jupyter="~/.pyenv/bin/jupyter-lab"
+alias pip="~/.pyenv/bin/pip"
+alias python="~/.pyenv/bin/python"
 
 
 # New functions

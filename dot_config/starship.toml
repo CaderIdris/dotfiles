@@ -2,7 +2,7 @@
 format = " "
 
 [container]
-symbol = ""
+symbol = ""
 format = '[$symbol \[Dev\]]($style)'
 
 [sudo]
