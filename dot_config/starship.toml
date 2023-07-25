@@ -1,9 +1,65 @@
+format = """$container $directory$sudo$cmd_duration$fill$username@$hostname- $localip$fill$git_status$git_metrics$git_branch$fill$python$rust$fill$memory_usage$fill $battery$line_break """
+
 [character]
 format = " "
 
+[directory]
+home_symbol = '󱂵 '
+
+[fill]
+symbol = '󰇼'
+style = 'green'
+
+[username]
+format = ' [$user]($style)'
+show_always = true
+
+[hostname]
+format = '[$ssh_symbol$hostname]($style) '
+ssh_only = false
+
+[localip]
+ssh_only = false
+disabled = false
+
 [container]
-symbol = ""
-format = '[$symbol \[Dev\]]($style)'
+symbol = "  "
+format = '[$symbol]($style)'
+
+[git_status]
+format = ' ([\[$all_status$ahead_behind\]]($style) )'
+
+[python]
+format = " [${symbol}${pyenv_prefix}(${version} )($virtualenv)]($style)"
+detect_extensions = ['py', 'ipynb']
 
 [sudo]
 disabled = false
+
+[git_metrics]
+disabled = false
+
+[git_branch]
+format = " [$symbol$branch]($style) "
+
+[memory_usage]
+disabled = false
+threshold = -1
+format = ' $symbol [${ram}]($style) '
+
+
+[[battery.display]]
+threshold = 20
+style = 'bold red'
+
+[[battery.display]]
+threshold = 40
+style = 'bold orange'
+
+[[battery.display]]
+threshold = 60
+style = 'yellow'
+
+[[battery.display]]
+threshold = 100
+style = 'green'

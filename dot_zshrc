@@ -1,9 +1,14 @@
 figlet "Cymru am byth!"
 
-[[ -r ~/.zsh/.znap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/.zsh/.znap
-source ~/.zsh/.znap/znap.zsh
+zsh ~/.local/share/quotes/run.zsh
+
+if [ ! -e ~/.local/share/znap/znap.zsh ]; then
+	mkdir -p ~/.local/share/znap 
+	git clone --depth 1 -- \
+		https://github.com/marlonrichert/zsh-snap.git ~/.local/share/znap
+fi
+
+source ~/.local/share/znap/znap.zsh
 
 export EDITOR='nvim'
 
@@ -31,6 +36,9 @@ nvall () {
 	fi
 }
 
-eval "$(starship init zsh)"
+znap source 'zsh-users/zsh-syntax-highlighting'
+znap source 'zsh-users/zsh-autosuggestions'
+znap source 'zsh-users/zsh-history-substring-search'
+znap source 'MichaelAquilina/zsh-auto-notify'
 
-znap source marlonrichert/zsh-autocomplete
+eval "$(starship init zsh)"
