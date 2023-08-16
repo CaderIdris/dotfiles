@@ -24,6 +24,7 @@ alias bsync="browser-sync start --server --files --no-open"
 alias jupyter="~/.pyenv/bin/jupyter-lab"
 alias pip="~/.pyenv/bin/pip"
 alias python="~/.pyenv/bin/python"
+alias code="vscodium"
 
 
 # New functions
