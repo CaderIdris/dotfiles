@@ -21,9 +21,8 @@ alias flatup="flatpak update"
 
 alias bsync="browser-sync start --server --files --no-open"
 
-alias jupyter="~/.pyenv/bin/jupyter-lab"
-alias pip="~/.pyenv/bin/pip"
-alias python="~/.pyenv/bin/python"
+alias jupyter="~/.local/share/virtualenvs/datblygiad/bin/jupyter-lab"
+alias python="~/.local/share/virtualenvs/datblygiad/bin/python"
 alias code="vscodium"
 
 

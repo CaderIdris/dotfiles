@@ -15,6 +15,11 @@ jupyterlab = "*"
 ipywidgets = "*"
 spacy = "*"
 pyspark = "*"
+jupyterlab-gruvbox-dark = "*"
+flake8 = "*"
+jupyterlab-flake8 = "*"
+python-lsp-server = {extras = ["all"], version = "*"}
+jupyterlab-lsp = "*"
 
 [dev-packages]
 
