@@ -1,6 +1,7 @@
-local function map(m, k, v, s)
+local function map(m, k, v, c)
 	s = s or true
-	vim.keymap.set(m, k, v, { silent = s })
+	c = c or { silent = true, noremap = true }
+	vim.keymap.set(m, k, v, c)
 end
 
 map('n', '<Leader><Up>', 'zt')

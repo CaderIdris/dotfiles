@@ -163,6 +163,29 @@ local function manage_plugins()
 	},
 
 	["https://github.com/ms-jpq/coq_nvim.git"] = {},
+	["https://github.com/monaqa/dial.nvim.git"] = {
+            packadd_hook = function()
+		local augend = require("dial.augend")
+                require("dial.config").augends:register_group{
+			default = {
+				augend.integer.alias.decimal,
+				augend.integer.alias.hex,
+				augend.date.alias["%Y/%m/%d"],
+				augend.date.alias["%Y.%m.%d"],
+				augend.date.alias["%Y-%m-%d"],
+				augend.constant.alias.bool,
+				augend.constant.alias.semver,
+				augend.misc.alias.markdown_header,
+				augend.constant.new{
+							elements = {"and", "or"},
+							word = true,
+							cyclic = true
+						},
+					}
+
+                }
+            end,
+	},
 	["https://github.com/ms-jpq/coq.artifacts.git"] = {},
 	["https://github.com/ms-jpq/coq.thirdparty.git"] = {},
 
