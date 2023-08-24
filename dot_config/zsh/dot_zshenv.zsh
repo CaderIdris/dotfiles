@@ -7,3 +7,6 @@ export EDITOR='nvim'
 
 export PATH="$PATH:$HOME/.local/bin"
 
+export PIPX_HOME=/opt/pipx
+export PIPX_BIN_DIR=/usr/local/bin
+
