@@ -1,3 +1,25 @@
+lsp_servers = {
+	'bashls',
+	'cssls',
+	'html',
+	'jsonls',
+	'arduino_language_server',
+	'eslint',
+	'jedi_language_server',
+	'marksman',
+	'rust_analyzer',
+	'clangd',
+	'lua_ls',
+	'taplo',
+	'yamlls',
+	'texlab',
+	'yamlls',
+	'pyright',
+	'taplo',
+	'esbonio',
+	'dockerls' 
+}
+
 local function manage_plugins()
     local plugins = {
         ["https://github.com/faerryn/plogins.nvim.git"] = {},
@@ -130,35 +152,27 @@ local function manage_plugins()
         	packadd_after = { ["https://github.com/williamboman/mason.nvim.git"] = true },
 		packadd_hook = function()
 			require("mason-lspconfig").setup {
-				ensure_installed = {
-					'bashls',
-					'cssls',
-					'html',
-					'jsonls',
-					'arduino_language_server',
-					'eslint',
-					'jedi_language_server',
-					'marksman',
-					'rust_analyzer',
-					'clangd',
-					'lua_ls',
-					'taplo',
-					'yamlls',
-					'texlab',
-					'yamlls',
-					'pyright',
-					'taplo',
-					'esbonio',
-					'dockerls' 
-				}
+				ensure_installed = lsp_servers
 			}
 		end,
 	},
-
 	["https://github.com/neovim/nvim-lspconfig.git"] = {
-        	packadd_after = { ["https://github.com/williamboman/mason-lspconfig.nvim.git"] = true },
 		packadd_hook = function()
-			require("lspconfig").setup()
+			for _, server in ipairs(lsp_servers) do
+				if lsp_servers:find('jedi_language_server', 1, true) then
+					require("lspconfig")['jedi_language_server'].setup {
+						settings = {
+							jedi = {
+								workspace = {
+									environmentPath = '~/.local/share/virtualenvs/datblygiad/bin/python'
+									}
+								}
+							}
+						}
+				else
+					require("lspconfig")[server].setup()
+				end
+			end
 		end,
 	},
 
@@ -199,7 +213,7 @@ local function manage_plugins()
 end
 
 local plogins_source = "https://github.com/faerryn/plogins.nvim.git"
-local plogins_name = plogins_source:gsub("/", "%%")
+local plogins_name = plogins_source:gsub("[/:]", {["/"] = "%", [":"] = "%"})
 local plogins_dir = ("%s/site/pack/plogins/opt/%s"):format((vim.fn.stdpath("data")), plogins_name)
 if not vim.loop.fs_stat(plogins_dir) then
     vim.loop.spawn("git", { args = { "clone", "--depth", "1", plogins_source, plogins_dir } }, function(code, signal)
