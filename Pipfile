@@ -21,6 +21,10 @@ jupyterlab-flake8 = "*"
 python-lsp-server = {extras = ["all"], version = "*"}
 jupyterlab-lsp = "*"
 shap = "*"
+influxdb-client = "*"
+statsmodels = "*"
+bambi = "*"
+xgboost = "*"
 
 [dev-packages]
 
