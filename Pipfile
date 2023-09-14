@@ -25,6 +25,8 @@ influxdb-client = "*"
 statsmodels = "*"
 bambi = "*"
 xgboost = "*"
+jedi = "*"
+calidhayte = {file = "dev/Packages/calidhayte"}
 
 [dev-packages]
 

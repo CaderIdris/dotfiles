@@ -1,1 +1,2 @@
 PIPENV_CUSTOM_VENV_NAME=datblygiad
+PYTHONPATH=$PYTHONPATH:$HOME/.local/share/virtualenvs/datblygiad/lib/python3.11/site-packages

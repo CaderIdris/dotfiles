@@ -5,224 +5,249 @@ lsp_servers = {
 	'jsonls',
 	'arduino_language_server',
 	'eslint',
-	'jedi_language_server',
 	'marksman',
 	'rust_analyzer',
 	'clangd',
 	'lua_ls',
+	'pyright',
 	'taplo',
 	'yamlls',
 	'texlab',
 	'yamlls',
-	'pyright',
 	'taplo',
 	'esbonio',
-	'dockerls' 
+	'dockerls'
 }
 
-local function manage_plugins()
-    local plugins = {
-        ["https://github.com/faerryn/plogins.nvim.git"] = {},
-	["https://github.com/nvim-lua/plenary.nvim.git"] = {},
+vim.g.coq_settings = { auto_start = 'shut-up' }
+
+plugins = {
+	{ "nvim-lua/plenary.nvim" },
 	-- Required by some plugins for symbols
-	["https://github.com/kyazdani42/nvim-web-devicons.git"] = {},
+	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Fidget. Shows lsp progress
-	["https://github.com/j-hui/fidget.nvim.git"] = {
-		packadd_hook = function()
-			require('fidget').setup()
-		end,
+	{
+		"j-hui/fidget.nvim",
+		event = "LspAttach",
+		opts = {
+			-- options
+		},
 	},
-
 	-- Colour things in
-	["https://github.com/norcalli/nvim-colorizer.lua.git"] = {
-		packadd_hook = function()
-			require('colorizer').setup()
-		end,
-	},
-
-	-- File tree
-	["https://github.com/kyazdani42/nvim-tree.lua.git"] = {
-		packadd_hook = function()
-			require('nvim-tree').setup()
-		end,
-	},
-
-	--  Telescope
-	["https://github.com/nvim-telescope/telescope.nvim"] = {},
-	["https://github.com/nvim-telescope/telescope-fzf-native.nvim"] = {},
-	["https://github.com/nvim-telescope/telescope-symbols.nvim"] = {},
-	["https://github.com/karb94/neoscroll.nvim"] = {},
-
-	-- More surround commands
-	["https://github.com/tpope/vim-repeat"] = {},
-	["https://github.com/tpope/vim-surround"] = {},
-
-	-- More word objects
-	["https://github.com/AndrewRadev/splitjoin.vim"] = {},
-
-	-- Autopairs
-	["https://github.com/windwp/nvim-autopairs"] = {},
-
-	-- Tagbar
-	["https://github.com/preservim/tagbar"] = {},
-
-	-- EasyNavigator replacement
-	["https://github.com/phaazon/hop.nvim.git"] = {
-		packadd_hook = function()
-			require('hop').setup()
-		end,
-	},
-
-
-        ["https://github.com/nvim-lualine/lualine.nvim.git"] = {
-		packadd_hook = function()
-			require("lualine").setup {
-				options = {
-					icons_enabled = true,
-					component_separators = { left = "", right = "" },
-					section_separators   = { left = "", right = "" },
-					theme = 'gruvbox_dark' 
-				},
-			    tabline = { lualine_a = { "tabs" } },
-			}
-		    end,
-        },
-
-        ["https://github.com/lewis6991/gitsigns.nvim.git"] = {
-            packadd_hook = function()
-                require("gitsigns").setup()
-            end,
-        },
-
-        ["https://github.com/nvim-treesitter/nvim-treesitter.git"] = {
-            packadd_hook = function()
-                require("nvim-treesitter.configs").setup({
-                    ensure_installed = "all",
-                    highlight = { enable = true },
-                    indent    = { enable = true },
-                })
-                vim.opt.foldmethod = "expr"
-                vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
-            end,
-            upgrade_hook = function()
-                require("nvim-treesitter.install").update()
-            end,
-        },
-
-        ["https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git"] = {
-            packadd_after = { ["https://github.com/nvim-treesitter/nvim-treesitter.git"] = true },
-            packadd_hook = function()
-                require("nvim-treesitter.configs").setup({
-                    textobjects = {
-                        select = {
-                            enable = true,
-                            lookahead = true,
-                            keymaps = {
-                                ["af"] = "@function.outer",
-                                ["if"] = "@function.inner",
-                                ["ac"] = "@class.outer",
-                                ["ic"] = "@class.inner",
-                            },
-                        },
-                    },
-                })
-            end,
-        },
-
-	["https://github.com/junegunn/vim-emoji.git"] = {},
+	{ "norcalli/nvim-colorizer.lua" },
 	-- Theme
-	["https://github.com/ellisonleao/gruvbox.nvim.git"] = {
-        	packadd_after = { ["https://github.com/norcalli/nvim-colorizer.lua.git"] = true },
-		packadd_hook = function()
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = false,
+		dependencies = { "norcalli/nvim-colorizer.lua" },
+		config = function()
 			require("gruvbox").setup()
 			vim.cmd('set background=dark')
 			vim.cmd('colorscheme gruvbox')
 		end,
 	},
 
+	-- File tree
+	{
+		"kyazdani42/nvim-tree.lua",
+		lazy = false
+	},
+
+	--  Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		lazy = false
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		lazy = false
+	},
+	{
+		"nvim-telescope/telescope-symbols.nvim",
+		lazy = false
+	},
+	{
+		"karb94/neoscroll.nvim",
+		lazy = false
+	},
+
+	-- More surround commands
+	{
+		"tpope/vim-repeat",
+		lazy = false
+	},
+	{
+		"tpope/vim-surround",
+		lazy = false
+	},
+
+	-- More word objects
+	{
+		"AndrewRadev/splitjoin.vim",
+		lazy = false
+	},
+
+	-- Autopairs
+	{
+		"windwp/nvim-autopairs",
+		lazy = false
+	},
+
+	-- Tagbar
+	{
+		"preservim/tagbar",
+		lazy = false
+	},
+	-- EasyNavigator replacement
+
+	{
+		"phaazon/hop.nvim",
+		lazy = false
+	},
+
+
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			options = {
+				icons_enabled = true,
+				component_separators = { left = "", right = "" },
+				section_separators   = { left = "", right = "" },
+				theme = 'gruvbox_dark' 
+			},
+			tabline = { lualine_a = { "tabs" } },
+		},
+	},
+
+	{
+		"lewis6991/gitsigns.nvim",
+	},
+
+	{ 
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = "all",
+				highlight = { enable = true },
+				indent    = { enable = true },
+			})
+			vim.opt.foldmethod = "expr"
+			vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
+		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+						},
+					},
+				},
+			})
+		end,
+	},
+
+	{
+		"junegunn/vim-emoji",
+	},
+
 	-- LSP
-	["https://github.com/williamboman/mason.nvim.git"] = {
-		packadd_hook = function()
+	{
+		"williamboman/mason.nvim",
+		config = function()
 			require("mason").setup()
 		end,
 	},
 
-	["https://github.com/williamboman/mason-lspconfig.nvim.git"] = {
-        	packadd_after = { ["https://github.com/williamboman/mason.nvim.git"] = true },
-		packadd_hook = function()
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		config = function()
 			require("mason-lspconfig").setup {
 				ensure_installed = lsp_servers
 			}
 		end,
 	},
-	["https://github.com/neovim/nvim-lspconfig.git"] = {
-		packadd_hook = function()
+	{
+		"ms-jpq/coq_nvim",
+		branch = 'coq'
+	},
+	{
+		"ms-jpq/coq.artifacts",
+		branch = 'artifacts'
+	},
+	{
+		"ms-jpq/coq.thirdparty",
+		branch = '3p'
+	},
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
 			for _, server in ipairs(lsp_servers) do
-				if lsp_servers:find('jedi_language_server', 1, true) then
-					require("lspconfig")['jedi_language_server'].setup {
+				if server:find('jedi_language_server', 1, true) then
+					require("lspconfig")[server].setup {
 						settings = {
-							jedi = {
-								workspace = {
-									environmentPath = '~/.local/share/virtualenvs/datblygiad/bin/python'
+							require("coq").lsp_ensure_capabilities {
+								jedi = {
+									workspace = {
+										environmentPath = '~/.local/share/virtualenvs/datblygiad'
 									}
 								}
 							}
 						}
+					}
 				else
-					require("lspconfig")[server].setup()
+					require("lspconfig")[server].setup(require("coq").lsp_ensure_capabilities())
 				end
 			end
 		end,
 	},
-
-	["https://github.com/ms-jpq/coq_nvim.git"] = {},
-	["https://github.com/monaqa/dial.nvim.git"] = {
-            packadd_hook = function()
-		local augend = require("dial.augend")
-                require("dial.config").augends:register_group{
-			default = {
-				augend.integer.alias.decimal,
-				augend.integer.alias.hex,
-				augend.date.alias["%Y/%m/%d"],
-				augend.date.alias["%Y.%m.%d"],
-				augend.date.alias["%Y-%m-%d"],
-				augend.constant.alias.bool,
-				augend.constant.alias.semver,
-				augend.misc.alias.markdown_header,
-				augend.constant.new{
-							elements = {"and", "or"},
-							word = true,
-							cyclic = true
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+		require("neorg").setup {
+		load = {
+			["core.defaults"] = {}, -- Loads default behaviour
+			["core.concealer"] = {}, -- Adds pretty icons to your documents
+			["core.dirman"] = { -- Manages Neorg workspaces
+				config = {
+					workspaces = {
+						personal = "~/Notes/Personal",
+						work = "~/Notes/Work"
+							},
 						},
-					}
+					},
+				},
+			}
+		end,
+	}
+}
 
-                }
-            end,
-	},
-	["https://github.com/ms-jpq/coq.artifacts.git"] = {},
-	["https://github.com/ms-jpq/coq.thirdparty.git"] = {},
-
-	["https://github.com/dense-analysis/ale.git"] = {},
-    }
-
-    local manager = require("plogins").manage(plugins)
-
-    vim.api.nvim_create_user_command("PloginsUpgrade",    manager.upgrade,    {})
-    vim.api.nvim_create_user_command("PloginsAutoremove", manager.autoremove, {})
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup(plugins, opts)
 
-local plogins_source = "https://github.com/faerryn/plogins.nvim.git"
-local plogins_name = plogins_source:gsub("[/:]", {["/"] = "%", [":"] = "%"})
-local plogins_dir = ("%s/site/pack/plogins/opt/%s"):format((vim.fn.stdpath("data")), plogins_name)
-if not vim.loop.fs_stat(plogins_dir) then
-    vim.loop.spawn("git", { args = { "clone", "--depth", "1", plogins_source, plogins_dir } }, function(code, signal)
-        vim.defer_fn(function()
-            vim.cmd(("packadd %s"):format(vim.fn.fnameescape(plogins_name)))
-            manage_plugins()
-        end, 0)
-    end)
-else
-    vim.cmd(("packadd %s"):format(vim.fn.fnameescape(plogins_name)))
-    manage_plugins()
-end
+
