@@ -1,4 +1,17 @@
 {
     "workbench.colorTheme": "Mayukai Mirage Gruvbox Darktooth",
-    "python.defaultInterpreterPath": "~/.local/share/virtualenvs/datblygiad/bin/python"
+    "python.defaultInterpreterPath": "~/.local/share/virtualenvs/datblygiad/bin/python",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "pitchfork",
+            "database": "/home/idris/Containers/datblygiad/dev/Projects/DashTest/data/database.sqlite"
+        }
+    ],
+    "markdown.marp.enableHtml": true,
+    "sqltools.useNodeRuntime": true
 }

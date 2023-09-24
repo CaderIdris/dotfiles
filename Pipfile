@@ -26,7 +26,11 @@ statsmodels = "*"
 bambi = "*"
 xgboost = "*"
 jedi = "*"
-calidhayte = {file = "dev/Packages/calidhayte"}
+textblob = "*"
+nrclex = {file = "dev/Packages/nrclex", editable = true}
+hdbscan = "*"
+sentence-transformers = "*"
+umap-learn = "*"
 
 [dev-packages]
 
