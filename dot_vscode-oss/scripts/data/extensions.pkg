@@ -8,3 +8,10 @@ databricks.sqltools-databricks-driver
 mtxr.sqltools-driver-mysql
 mtxr.sqltools-driver-pg
 mtxr.sqltools-driver-sqlite
+mtxr.sqltools-driver-mssql
+ms-vscode.azure-account
+ms-azuretools.vscode-azurefunctions
+ms-vsts.team
+ms-azuretools.vscode-azureresourcegroups
+ms-azuretools.vscode-docker
+mechatroner.rainbow-csv
