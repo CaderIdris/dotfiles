@@ -27,10 +27,11 @@ bambi = "*"
 xgboost = "*"
 jedi = "*"
 textblob = "*"
-nrclex = {file = "dev/Packages/nrclex", editable = true}
 hdbscan = "*"
 sentence-transformers = "*"
 umap-learn = "*"
+scikit-survival = "*"
+vectordb = "*"
 
 [dev-packages]
 

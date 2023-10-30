@@ -13,5 +13,6 @@
         }
     ],
     "markdown.marp.enableHtml": true,
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "editor.unicodeHighlight.invisibleCharacters": false
 }

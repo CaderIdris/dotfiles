@@ -1,4 +1,4 @@
-format = """$container $directory$sudo$cmd_duration$fill$username@$hostname- $localip$fill$git_status$git_metrics$git_branch$fill$python$rust$fill$memory_usage$fill $battery$line_break """
+format = """$container $directory$sudo$cmd_duration $username@$hostname- $localip $git_status$git_metrics$git_branch $python$rust $memory_usage $battery$line_break """
 
 [character]
 format = " "
@@ -7,7 +7,7 @@ format = " "
 home_symbol = '󱂵 '
 
 [fill]
-symbol = '󰇼'
+symbol = ' '
 style = 'green'
 
 [username]
