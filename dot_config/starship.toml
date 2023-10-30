@@ -1,10 +1,17 @@
-format = """$container $directory$sudo$cmd_duration $username@$hostname- $localip $git_status$git_metrics$git_branch $python$rust $memory_usage $battery$line_break """
+format = """$container $directory$sudo$cmd_duration$azure$python$rust $git_status$git_metrics$git_branch $fill$username@$hostname - $localip $battery$line_break """
 
 [character]
 format = " "
 
+[azure]
+disabled = false
+format = "[on](bright-purple) [$symbol($username)]($style) "
+symbol = "󰠅 "
+style = "white"
+
 [directory]
 home_symbol = '󱂵 '
+style = 'white'
 
 [fill]
 symbol = ' '
@@ -13,18 +20,22 @@ style = 'green'
 [username]
 format = ' [$user]($style)'
 show_always = true
+style_user = 'bright-purple'
 
 [hostname]
 format = '[$ssh_symbol$hostname]($style) '
 ssh_only = false
+style = 'bright-purple'
 
 [localip]
 ssh_only = false
 disabled = false
+style = 'white'
 
 [container]
 symbol = "  "
 format = '[$symbol]($style)'
+style = 'bright-purple'
 
 [git_status]
 format = ' ([\[$all_status$ahead_behind\]]($style) )'
@@ -32,9 +43,11 @@ format = ' ([\[$all_status$ahead_behind\]]($style) )'
 [python]
 format = " [${symbol}${pyenv_prefix}(${version} )($virtualenv)]($style)"
 detect_extensions = ['py', 'ipynb']
+style = 'bright-purple'
 
 [sudo]
 disabled = false
+style = 'bright-purple'
 
 [git_metrics]
 disabled = false
@@ -46,6 +59,7 @@ format = " [$symbol$branch]($style) "
 disabled = false
 threshold = -1
 format = ' $symbol [${ram}]($style) '
+style = 'bright-purple'
 
 
 [[battery.display]]
