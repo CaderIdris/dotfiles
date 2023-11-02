@@ -14,5 +14,11 @@
     ],
     "markdown.marp.enableHtml": true,
     "sqltools.useNodeRuntime": true,
-    "editor.unicodeHighlight.invisibleCharacters": false
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "markdown.marp.pdf.noteAnnotations": true,
+    "markdown.marp.themes": [
+        "/home/idris/Containers/datblygiad/dev/PhD/Presentations/Catch Up/style.css",
+        "style.css"
+    ],
+    "markdown.marp.exportType": "html"
 }

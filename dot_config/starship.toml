@@ -9,6 +9,10 @@ format = "[on](bright-purple) [$symbol($username)]($style) "
 symbol = "󰠅 "
 style = "white"
 
+[cmd_duration]
+min_time = 5000
+style = 'white'
+
 [directory]
 home_symbol = '󱂵 '
 style = 'white'
