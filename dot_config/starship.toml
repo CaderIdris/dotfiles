@@ -18,7 +18,7 @@ home_symbol = '󱂵 '
 style = 'white'
 
 [fill]
-symbol = ''
+symbol = '─'
 style = 'white'
 
 [username]

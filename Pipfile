@@ -32,6 +32,13 @@ sentence-transformers = "*"
 umap-learn = "*"
 scikit-survival = "*"
 vectordb = "*"
+transformers = "*"
+accelerate = "*"
+safetensors = "*"
+torch = "*"
+torchvision = "*"
+torchaudio = "*"
+diffusers = {git = "git+https://github.com/huggingface/diffusers"}
 
 [dev-packages]
 

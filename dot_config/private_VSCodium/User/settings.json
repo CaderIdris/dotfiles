@@ -10,6 +10,18 @@
             "driver": "SQLite",
             "name": "pitchfork",
             "database": "/home/idris/Containers/datblygiad/dev/Projects/DashTest/data/database.sqlite"
+        },
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MSSQL",
+            "name": "email_test_db",
+            "connectString": "Driver={ODBC Driver 18 for SQL Server};Server=tcp:sse-test-server.database.windows.net,1433;Database=email_test_db;Uid=sse-test;Pwd=C3cmMVPeK2lRSatY/ihTq+61vKWZR+70H0e8TrpLTZ+ACRCFI446;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
         }
     ],
     "markdown.marp.enableHtml": true,
