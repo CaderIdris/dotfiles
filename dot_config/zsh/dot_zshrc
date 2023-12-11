@@ -8,4 +8,5 @@ source $ZDOTDIR/.zaliases.zsh
 source $ZDOTDIR/.zfuncs.zsh
 source $ZDOTDIR/.zkeybinds.zsh
 
+eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"

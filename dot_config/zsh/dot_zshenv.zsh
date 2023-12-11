@@ -10,3 +10,5 @@ export PATH="$PATH:$HOME/.local/bin"
 export PIPX_HOME=/opt/pipx
 export PIPX_BIN_DIR=/usr/local/bin
 
+export AZURE_CONFIG_DIR="$HOME/.az/Empirisys"
+

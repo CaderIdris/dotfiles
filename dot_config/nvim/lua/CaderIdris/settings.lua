@@ -1,5 +1,6 @@
 local g = vim.g
 local o = vim.o
+local a = vim.api
 
 o.incsearch = true
 o.ignorecase = true
@@ -14,16 +15,16 @@ o.cul = true
 o.rnu = true
 
 o.termguicolors = true
-vim.api.nvim_command('hi Error ctermfg=Black')
-vim.api.nvim_command('hi SpellBad ctermfg=Black')
-vim.api.nvim_command('hi SpellCap ctermfg=Black')
-vim.api.nvim_command('hi SpellLocal ctermfg=Black')
+a.nvim_command('hi Error ctermfg=Black')
+a.nvim_command('hi SpellBad ctermfg=Black')
+a.nvim_command('hi SpellCap ctermfg=Black')
+a.nvim_command('hi SpellLocal ctermfg=Black')
 
-o.foldmethod = 'indent'
+o.foldmethod = 'expr'
+o.foldexpr = 'nvim_treesitter#fold_expr()'
 o.foldnestmax = 10
 o.foldenable = true
 o.foldlevel = 10
---vim.api.nvim_create_autocmd({'BufEnter'}, {pattern=command = "set foldenable"})
 
 o.spell = true
 o.spelllang = "en_gb,cy"
@@ -36,3 +37,15 @@ o.title = true
 g.mapleader = " "
 g.maplocalleader = " "
 
+a.nvim_create_autocmd(
+    {
+        "BufNewFile",
+        "BufRead",
+    },
+    {
+        pattern = "*.py",
+        callback = function()
+		o.colorcolumn = "80"
+        end
+    }
+)

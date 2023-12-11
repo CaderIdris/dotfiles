@@ -39,6 +39,10 @@ torch = "*"
 torchvision = "*"
 torchaudio = "*"
 diffusers = {git = "git+https://github.com/huggingface/diffusers"}
+wfdb = "*"
+dash = "*"
+dash-bootstrap-components = "*"
+openpyxl = "*"
 
 [dev-packages]
 
