@@ -3,10 +3,10 @@ toilet --gay -t "Cymru am byth!"
 zsh ~/.local/share/quotes/run.zsh
 
 source $ZDOTDIR/.zplugins.zsh
-source $ZDOTDIR/.zshenv.zsh
 source $ZDOTDIR/.zaliases.zsh
 source $ZDOTDIR/.zfuncs.zsh
 source $ZDOTDIR/.zkeybinds.zsh
+source $ZDOTDIR/.zshenv.zsh
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"

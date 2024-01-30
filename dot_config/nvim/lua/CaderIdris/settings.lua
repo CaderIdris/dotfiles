@@ -49,3 +49,16 @@ a.nvim_create_autocmd(
         end
     }
 )
+
+a.nvim_create_autocmd(
+    {
+        "BufNewFile",
+        "BufRead",
+    },
+    {
+        pattern = "*.just,justfile",
+        callback = function()
+		a.nvim_command('set filetype=make')
+        end
+    }
+)

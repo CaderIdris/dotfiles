@@ -71,6 +71,18 @@ plugins = {
 		"karb94/neoscroll.nvim",
 		lazy = false
 	},
+	-- csv viewer
+	{
+		'vidocqh/data-viewer.nvim',
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+      			"kkharji/sqlite.lua"
+		},
+		config = function()
+			require("data-viewer").setup()
+		end,
+	},
 
 	-- More surround commands
 	{
@@ -103,6 +115,9 @@ plugins = {
 
 	{
 		"phaazon/hop.nvim",
+		config = function()
+			require("hop").setup()
+		end,
 		lazy = false
 	},
 
@@ -225,8 +240,9 @@ plugins = {
 			["core.dirman"] = { -- Manages Neorg workspaces
 				config = {
 					workspaces = {
-						personal = "~/Notes/Personal",
-						work = "~/Notes/Work"
+						general = "~/Notes/General",
+						work = "~/Notes/Work",
+						phd = "~/Notes/PhD",
 							},
 						},
 					},
