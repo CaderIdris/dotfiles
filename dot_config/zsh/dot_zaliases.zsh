@@ -1,4 +1,5 @@
 alias ls="exa -l --icons"
+alias tree="exa --tree --icons"
 alias fd="fdfind"
 
 alias bsync="browser-sync start --server --files --no-open"

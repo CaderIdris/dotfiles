@@ -1,0 +1,7 @@
+[tool.ruff]
+extend-include = ["*.ipynb"]
+line-length = 80
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "N", "D", "UP", "ANN", "BLE", "C4", "EM", "NPY", "LOG", "RUF", "PD", "T20", "A", "C90", "PTH", "G"]

@@ -16,7 +16,8 @@ lsp_servers = {
 	'yamlls',
 	'taplo',
 	'esbonio',
-	'dockerls'
+	'dockerls',
+	'ruff_lsp'
 }
 
 vim.g.coq_settings = { auto_start = 'shut-up' }
@@ -243,7 +244,8 @@ plugins = {
 						general = "~/Notes/General",
 						work = "~/Notes/Work",
 						phd = "~/Notes/PhD",
-							},
+					},
+					default_workspace = "phd"
 						},
 					},
 				},
