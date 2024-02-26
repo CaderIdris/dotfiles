@@ -1,12 +1,13 @@
-format = '$shell $directory$sudo$git_status$git_metrics$cmd_duration$fill$git_branch$python$rust$azure $line_break '
+format = '(Duration: $cmd_duration)$line_break$shell $directory$sudo$git_status$git_metrics$fill$git_branch$python$rust$azure $line_break '
+add_newline = false
 
 [character]
 format = " "
 
 [azure]
 disabled = false
-format = "[$symbol($username) on ($subscription)]($style) "
-symbol = " "
+format = "$symbol[($username)  [  ](bright-purple)($subscription)]($style) "
+symbol = "[](bright-purple)  "
 style = "white"
 
 [shell]
@@ -20,7 +21,7 @@ style = 'bright-purple'
 
 [cmd_duration]
 min_time = 5000
-format = '[\($duration\)]($style)'
+format = '[$duration]($style)'
 style = 'white'
 
 [directory]
@@ -55,15 +56,15 @@ style = 'bright-purple'
 format = ' ([\[$all_status$ahead_behind\]]($style) )'
 
 [python]
-symbol = " "
-format = " [${symbol}(${version})($virtualenv)  ]($style)"
+symbol = "[](bright-purple)  "
+format = " ${symbol}[(${version})($virtualenv)  ]($style)"
 version_format = "${raw}"
 detect_extensions = ['py', 'ipynb']
 style = 'white'
 
 [sudo]
 disabled = false
-format = "[$symbol ](style)"
+format = "[$symbol](style)"
 symbol = '🤓'
 style = 'bright-purple'
 
@@ -71,7 +72,8 @@ style = 'bright-purple'
 disabled = false
 
 [git_branch]
-format = "[$symbol$branch]($style) "
+symbol = "[](bright-purple)  "
+format = "$symbol[$branch]($style) "
 style = "white"
 
 [memory_usage]

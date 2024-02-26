@@ -19,3 +19,4 @@ export LANG=en_GB.UTF-8
 
 AUTO_NOTIFY_IGNORE+=("vifm")
 AUTO_NOTIFY_IGNORE+=("zathura")
+AUTO_NOTIFY_IGNORE+=("chezmoi")
