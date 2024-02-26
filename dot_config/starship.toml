@@ -7,7 +7,7 @@ format = " "
 disabled = false
 format = "[$symbol($username) on ($subscription)]($style) "
 symbol = " "
-style = "bright-purple"
+style = "white"
 
 [shell]
 disabled = false
@@ -63,7 +63,7 @@ style = 'white'
 
 [sudo]
 disabled = false
-format = "[$symbol](style)"
+format = "[$symbol ](style)"
 symbol = '🤓'
 style = 'bright-purple'
 
@@ -72,6 +72,7 @@ disabled = false
 
 [git_branch]
 format = "[$symbol$branch]($style) "
+style = "white"
 
 [memory_usage]
 disabled = false
