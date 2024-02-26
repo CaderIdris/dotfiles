@@ -1,16 +1,26 @@
-format = """$container $directory$sudo$cmd_duration$azure$python$rust$git_status$git_metrics$git_branch$fill $username@$hostname - $localip $battery$line_break """
+format = '$shell $directory$sudo$git_status$git_metrics$cmd_duration$fill$git_branch$python$rust$azure $line_break '
 
 [character]
 format = " "
 
 [azure]
 disabled = false
-format = "[on](bright-purple) [$symbol($username)]($style) "
-symbol = "󰠅 "
-style = "white"
+format = "[$symbol($username) on ($subscription)]($style) "
+symbol = " "
+style = "bright-purple"
+
+[shell]
+disabled = false
+bash_indicator = ''
+zsh_indicator = '󰵁'
+powershell_indicator = ""
+nu_indicator = "𝝢"
+format = '[$indicator]($style) '
+style = 'bright-purple'
 
 [cmd_duration]
 min_time = 5000
+format = '[\($duration\)]($style)'
 style = 'white'
 
 [directory]
@@ -18,7 +28,7 @@ home_symbol = '󱂵 '
 style = 'white'
 
 [fill]
-symbol = '─'
+symbol = ' '
 style = 'white'
 
 [username]
@@ -27,7 +37,7 @@ show_always = true
 style_user = 'bright-purple'
 
 [hostname]
-format = '[$ssh_symbol$hostname]($style) '
+format = '[$ssh_symbol$hostname]($style)'
 ssh_only = false
 style = 'bright-purple'
 
@@ -45,26 +55,29 @@ style = 'bright-purple'
 format = ' ([\[$all_status$ahead_behind\]]($style) )'
 
 [python]
-format = " [${symbol}${pyenv_prefix}(${version} )($virtualenv)]($style)"
+symbol = " "
+format = " [${symbol}(${version})($virtualenv)  ]($style)"
+version_format = "${raw}"
 detect_extensions = ['py', 'ipynb']
-style = 'bright-purple'
+style = 'white'
 
 [sudo]
 disabled = false
+format = "[$symbol](style)"
+symbol = '🤓'
 style = 'bright-purple'
 
 [git_metrics]
 disabled = false
 
 [git_branch]
-format = " [$symbol$branch]($style) "
+format = "[$symbol$branch]($style) "
 
 [memory_usage]
 disabled = false
 threshold = -1
 format = ' $symbol [${ram}]($style) '
 style = 'bright-purple'
-
 
 [[battery.display]]
 threshold = 20

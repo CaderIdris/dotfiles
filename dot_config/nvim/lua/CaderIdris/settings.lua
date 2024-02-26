@@ -13,6 +13,7 @@ o.list = true
 o.listchars = 'tab:▸ '
 o.cul = true
 o.rnu = true
+o.updatetime = 2000
 
 o.termguicolors = true
 a.nvim_command('hi Error ctermfg=Black')
@@ -59,6 +60,17 @@ a.nvim_create_autocmd(
         pattern = "*.just,justfile",
         callback = function()
 		a.nvim_command('set filetype=make')
+        end
+    }
+)
+
+a.nvim_create_autocmd(
+    {
+        "CursorHold"
+    },
+    {
+        callback = function()
+		vim.diagnostic.open_float()
         end
     }
 )

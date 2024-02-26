@@ -37,28 +37,63 @@ plugins = {
 	},
 	-- Colour things in
 	{ "norcalli/nvim-colorizer.lua" },
-	-- Theme
 	{
-		"ellisonleao/gruvbox.nvim",
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = function(_, opts)
+			-- Other blankline configuration here
+			return require("indent-rainbowline").make_opts(opts)
+		end,
+		dependencies = {
+			"TheGLander/indent-rainbowline.nvim",
+		},
+	},
+	-- Theme
+	--{
+	--	"ellisonleao/gruvbox.nvim",
+	--	lazy = false,
+	--	dependencies = { "norcalli/nvim-colorizer.lua" },
+	--	config = function()
+	--		require("gruvbox").setup()
+	--		vim.cmd('set background=dark')
+	--		vim.cmd('colorscheme gruvbox')
+	--	end,
+	--},
+	{
+		'luisiacc/gruvbox-baby',
 		lazy = false,
-		dependencies = { "norcalli/nvim-colorizer.lua" },
-		config = function()
-			require("gruvbox").setup()
-			vim.cmd('set background=dark')
-			vim.cmd('colorscheme gruvbox')
+		config = function() 
+			vim.g.gruvbox_baby_background_color = "dark"
+			vim.g.gruvbox_baby_telescope_theme = 1
+			vim.cmd.colorscheme("gruvbox-baby")
 		end,
 	},
 
 	-- File tree
 	{
-		"kyazdani42/nvim-tree.lua",
-		lazy = false
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
 	},
 
 	--  Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = false
+		lazy = false,
+		opts = {
+			defaults = {
+				borderchars = {
+					prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+					results = { " " },
+					preview = { " " },
+				}
+			}
+		}
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
@@ -70,6 +105,9 @@ plugins = {
 	},
 	{
 		"karb94/neoscroll.nvim",
+		config = function ()
+			require('neoscroll').setup {}
+		end,
 		lazy = false
 	},
 	-- csv viewer
@@ -91,10 +129,15 @@ plugins = {
 		lazy = false
 	},
 	{
-		"tpope/vim-surround",
+		"kylechui/nvim-surround",
 		lazy = false
 	},
 
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		opts = {}
+	},
 	-- More word objects
 	{
 		"AndrewRadev/splitjoin.vim",
@@ -130,7 +173,7 @@ plugins = {
 				icons_enabled = true,
 				component_separators = { left = "", right = "" },
 				section_separators   = { left = "", right = "" },
-				theme = 'gruvbox_dark' 
+				theme = 'gruvbox_dark'
 			},
 			tabline = { lualine_a = { "tabs" } },
 		},
@@ -138,9 +181,10 @@ plugins = {
 
 	{
 		"lewis6991/gitsigns.nvim",
+		opts = {}
 	},
 
-	{ 
+	{
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -173,9 +217,26 @@ plugins = {
 			})
 		end,
 	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		opts = {}
+	},
+	{
+	  'stevearc/dressing.nvim',
+	  opts = {},
+	},
 
 	{
-		"junegunn/vim-emoji",
+	    "ziontee113/icon-picker.nvim",
+	    config = function()
+		require("icon-picker").setup({ disable_legacy_commands = true })
+
+		local opts = { noremap = true, silent = true }
+
+		vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
+		vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
+		vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+	    end
 	},
 
 	-- LSP
@@ -229,6 +290,13 @@ plugins = {
 			end
 		end,
 	},
+	{
+		"gelguy/wilder.nvim",
+		opts = {
+			modes = {':', '/', '?'}
+		}
+	},
+	-- Neorg
 	{
 		"nvim-neorg/neorg",
 		build = ":Neorg sync-parsers",
