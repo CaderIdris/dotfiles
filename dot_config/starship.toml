@@ -73,7 +73,7 @@ disabled = false
 
 [git_branch]
 symbol = "[](bright-purple)  "
-format = "$symbol[$branch]($style) "
+format = "$symbol[$branch]($style)  "
 style = "white"
 
 [memory_usage]
