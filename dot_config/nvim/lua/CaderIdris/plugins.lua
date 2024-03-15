@@ -18,7 +18,7 @@ lsp_servers = {
 	'esbonio',
 	'dockerls',
 	'ruff_lsp',
-	'htmx'
+	'htmx',
 	'gleam'
 }
 
