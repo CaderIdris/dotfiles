@@ -43,6 +43,10 @@ wfdb = "*"
 dash = "*"
 dash-bootstrap-components = "*"
 openpyxl = "*"
+dbcv = {git = "git+https://github.com/christopherjenness/DBCV"}
+clusteval = "*"
+openai = "*"
+distfit = "*"
 
 [dev-packages]
 

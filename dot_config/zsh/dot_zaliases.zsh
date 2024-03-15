@@ -7,7 +7,7 @@ alias cd="z"
 
 alias bsync="browser-sync start --server --files --no-open"
 
-alias jupyter="~/.local/share/virtualenvs/datblygiad/bin/jupyter-lab $HOME --no-browser"
+alias jupyter="cd ~/.pipenv && pipenv run jupyter-lab $HOME --no-browser"
 
 alias code="vscodium"
 

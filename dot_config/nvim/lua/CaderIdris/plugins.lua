@@ -17,7 +17,8 @@ lsp_servers = {
 	'taplo',
 	'esbonio',
 	'dockerls',
-	'ruff_lsp'
+	'ruff_lsp',
+	'htmx'
 }
 
 vim.g.coq_settings = { auto_start = 'shut-up' }
@@ -295,6 +296,12 @@ plugins = {
 		opts = {
 			modes = {':', '/', '?'}
 		}
+	},
+	-- Snippets
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp"
 	},
 	-- Neorg
 	{
