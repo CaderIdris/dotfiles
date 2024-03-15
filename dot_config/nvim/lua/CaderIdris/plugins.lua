@@ -19,6 +19,7 @@ lsp_servers = {
 	'dockerls',
 	'ruff_lsp',
 	'htmx'
+	'gleam'
 }
 
 vim.g.coq_settings = { auto_start = 'shut-up' }
@@ -302,6 +303,10 @@ plugins = {
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
 		build = "make install_jsregexp"
+	},
+	-- Neoformat
+	{
+		"sbdchd/neoformat"
 	},
 	-- Neorg
 	{
