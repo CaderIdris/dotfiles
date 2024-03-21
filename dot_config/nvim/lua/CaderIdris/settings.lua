@@ -14,12 +14,9 @@ o.listchars = 'tab:▸ '
 o.cul = true
 o.rnu = true
 o.updatetime = 2000
+o.cmdheight = 0
 
 o.termguicolors = true
-a.nvim_command('hi Error ctermfg=Black')
-a.nvim_command('hi SpellBad ctermfg=Black')
-a.nvim_command('hi SpellCap ctermfg=Black')
-a.nvim_command('hi SpellLocal ctermfg=Black')
 
 o.foldmethod = 'expr'
 o.foldexpr = 'nvim_treesitter#fold_expr()'
@@ -47,19 +44,6 @@ a.nvim_create_autocmd(
         pattern = "*.py",
         callback = function()
 		o.colorcolumn = "80"
-        end
-    }
-)
-
-a.nvim_create_autocmd(
-    {
-        "BufNewFile",
-        "BufRead",
-    },
-    {
-        pattern = "*.just,justfile",
-        callback = function()
-		a.nvim_command('set filetype=make')
         end
     }
 )

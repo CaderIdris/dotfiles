@@ -47,6 +47,7 @@ dbcv = {git = "git+https://github.com/christopherjenness/DBCV"}
 clusteval = "*"
 openai = "*"
 distfit = "*"
+kaleido = "*"
 
 [dev-packages]
 

@@ -17,7 +17,7 @@
 
     // Selected Theme
     // Application-level visual styling theme
-    "theme": "JupyterLab Dark",
+    "theme": "jupyterlab_gruvbox_dark",
 
     // Scrollbar Theming
     // Enable/disable styling of the application scrollbars

@@ -37,19 +37,6 @@ plugins = {
 			-- options
 		},
 	},
-	-- Colour things in
-	{ "norcalli/nvim-colorizer.lua" },
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = function(_, opts)
-			-- Other blankline configuration here
-			return require("indent-rainbowline").make_opts(opts)
-		end,
-		dependencies = {
-			"TheGLander/indent-rainbowline.nvim",
-		},
-	},
 	-- Theme
 	--{
 	--	"ellisonleao/gruvbox.nvim",
@@ -61,14 +48,31 @@ plugins = {
 	--		vim.cmd('colorscheme gruvbox')
 	--	end,
 	--},
+	{ "norcalli/nvim-colorizer.lua" },
 	{
 		'luisiacc/gruvbox-baby',
 		lazy = false,
-		config = function() 
+		config = function()
 			vim.g.gruvbox_baby_background_color = "dark"
+			vim.g.gruvbox_baby_transparent_mode = false
 			vim.g.gruvbox_baby_telescope_theme = 1
 			vim.cmd.colorscheme("gruvbox-baby")
 		end,
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = function(_, opts)
+			return require("indent-rainbowline").make_opts(
+				opts,
+				{
+					color_transparency = 0.15,
+				}
+			)
+		end,
+		dependencies = {
+			"TheGLander/indent-rainbowline.nvim",
+		},
 	},
 
 	-- File tree
@@ -175,7 +179,7 @@ plugins = {
 				icons_enabled = true,
 				component_separators = { left = "", right = "" },
 				section_separators   = { left = "", right = "" },
-				theme = 'gruvbox_dark'
+				theme = 'gruvbox-baby'
 			},
 			tabline = { lualine_a = { "tabs" } },
 		},
