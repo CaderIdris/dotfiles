@@ -14,14 +14,5 @@ map('n', '<A-k>', ':move -2<CR>')
 map('x', '<A-j>', [[:move '>+1<CR>gv=gv']])
 map('x', '<A-k>', [[:move '<-2<CR>gv=gv]])
 
-map('n', '<Leader>t', ':Tagbar<CR>')
-map('n', '<Leader>o', ':Neotree<CR>')
-map('n', '<Leader>f', ':Telescope find_files<CR>')
-map('n', '<Leader>g', ':Telescope grep_string<CR>')
-
-map('n', '<Leader><Leader>w', ':HopWord<CR>')
-map('n', '<Leader><Leader>p', ':HopPattern<CR>')
-map('n', '<Leader><Leader>l', ':HopLine<CR>')
-
 map('n', '<Leader>xx', function() vim.diagnostic.open_float() end)
 map('n', '<Leader>xw', function() vim.diagnostic.setloclist() end)

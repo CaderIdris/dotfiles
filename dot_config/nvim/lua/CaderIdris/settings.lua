@@ -27,6 +27,9 @@ o.foldlevel = 10
 o.spell = true
 o.spelllang = "en_gb,cy"
 
+o.timeout = true
+o.timeoutlen = 300
+
 o.undofile = true
 
 o.titlestring = "%t"

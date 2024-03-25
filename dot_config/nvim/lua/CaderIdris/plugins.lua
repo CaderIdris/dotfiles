@@ -24,7 +24,18 @@ lsp_servers = {
 
 vim.g.coq_settings = { auto_start = 'shut-up' }
 
+local gruvbox_baby_toggle = function()
+	vim.g.gruvbox_baby_transparent_mode = not vim.g.gruvbox_baby_transparent_mode
+	vim.cmd.colorscheme("gruvbox-baby")
+end
+
 plugins = {
+	{
+	  "folke/which-key.nvim",
+	  event = "VeryLazy",
+	  opts = {
+	  }
+	},
 	{ "nvim-lua/plenary.nvim" },
 	-- Required by some plugins for symbols
 	{ "kyazdani42/nvim-web-devicons" },
@@ -52,9 +63,17 @@ plugins = {
 	{
 		'luisiacc/gruvbox-baby',
 		lazy = false,
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>ct"] =  {gruvbox_baby_toggle, "Toggle transparency"}
+				}
+			)
+		end,
 		config = function()
 			vim.g.gruvbox_baby_background_color = "dark"
-			vim.g.gruvbox_baby_transparent_mode = false
+			vim.g.gruvbox_baby_transparent_mode = true
 			vim.g.gruvbox_baby_telescope_theme = 1
 			vim.cmd.colorscheme("gruvbox-baby")
 		end,
@@ -66,7 +85,8 @@ plugins = {
 			return require("indent-rainbowline").make_opts(
 				opts,
 				{
-					color_transparency = 0.15,
+					color_transparency = 0.35,
+					colors = { 0xfb4934, 0xfabd2f, 0xd4879c, 0x98971a, 0xb16286, 0xd65d0e, 0x458488 },
 				}
 			)
 		end,
@@ -84,13 +104,42 @@ plugins = {
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 			"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		}
+		},
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>fb"] = {":Neotree<CR>", "Open Neotree"}
+				}
+			)
+		end,
 	},
 
 	--  Telescope
 	{
 		"nvim-telescope/telescope.nvim",
 		lazy = false,
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>ff"] = {":Telescope find_files<CR>", "Tscope: List files in cwd"},
+					["<leader>fg"] = {":Telescope git_files<CR>", "Tscope: Fuzzy search git files in curent repo"},
+					["<leader>fs"] = {":Telescope grep_string<CR>", "Tscope: Search for selected string in cwd"}, {mode = "v"},
+					["<leader>fl"] = {":Telescope live_grep<CR>", "Tscope: Search files in cwd"},
+					["<leader>hc"] = {":Telescope command_history<CR>", "Tscope: Search cmd history"},
+					["<leader>hf"] = {":Telescope oldfiles<CR>", "Tscope: Search file history"},
+					["<leader>tt"] = {":Telescope tags<CR>", "Tscope: Search tags"},
+					["<leader>vk"] = {":Telescope keymaps<CR>", "Tscope: Keymaps"},
+					["<leader>vo"] = {":Telescope vim_options<CR>", "Tscope: Vim options"},
+					["<leader>vr"] = {":Telescope registers<CR>", "Tscope: View registers"},
+					["<leader>vm"] = {":Telescope marks<CR>", "Tscope: View marks"},
+					["<leader>gc"] = {":Telescope git_commits<CR>", "Tscope: View git commits"},
+					["<leader>gb"] = {":Telescope git_branches<CR>", "Tscope: View git branches"},
+
+				}
+			)
+		end,
 		opts = {
 			defaults = {
 				borderchars = {
@@ -124,6 +173,14 @@ plugins = {
 			"nvim-lua/plenary.nvim",
       			"kkharji/sqlite.lua"
 		},
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>vd"] = {":DataViewer<CR>", "Open DataViewer"}
+				}
+			)
+		end,
 		config = function()
 			require("data-viewer").setup()
 		end,
@@ -150,15 +207,17 @@ plugins = {
 		lazy = false
 	},
 
-	-- Autopairs
-	{
-		"windwp/nvim-autopairs",
-		lazy = false
-	},
-
 	-- Tagbar
 	{
 		"preservim/tagbar",
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>wt"] = {":TagbarToggle<CR>", "Toggle Tagbar"},
+				}
+			)
+		end,
 		lazy = false
 	},
 	-- EasyNavigator replacement
@@ -167,6 +226,16 @@ plugins = {
 		"phaazon/hop.nvim",
 		config = function()
 			require("hop").setup()
+		end,
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>hw"] = {":HopWord<CR>", "Hop to word"},
+					["<leader>ha"] = {":HopAnywhere<CR>", "Hop anywhere"},
+					["<leader>hl"] = {":HopLineStart<CR>", "Hop to a line"},
+				}
+			)
 		end,
 		lazy = false
 	},
@@ -234,15 +303,17 @@ plugins = {
 
 	{
 	    "ziontee113/icon-picker.nvim",
-	    config = function()
-		require("icon-picker").setup({ disable_legacy_commands = true })
-
-		local opts = { noremap = true, silent = true }
-
-		vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
-		vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
-		vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
-	    end
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>ie"] = {":IconPickerNormal<CR>", "Add emoji"},
+				}
+			)
+		end,
+		config = function()
+			require("icon-picker").setup({ disable_legacy_commands = true })
+		end
 	},
 
 	-- LSP
@@ -310,7 +381,36 @@ plugins = {
 	},
 	-- Neoformat
 	{
-		"sbdchd/neoformat"
+		"sbdchd/neoformat",
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>nf"] = {":Neoformat<CR>", "Neoformat"},
+				}
+			)
+		end,
+	},
+	-- Silicon
+	{
+		"michaelrommel/nvim-silicon",
+		lazy = true,
+		cmd = "Silicon",
+		config = function()
+			require("silicon").setup({
+				-- Configuration here, or leave empty to use defaults
+				font = "JetBrainsMono Nerd Font=34;Twemoji=34",
+				theme = "gruvbox-dark",
+			})
+		end,
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>SC"] = {":Silicon<CR>", "Take Snapshot"}, {mode="v"},
+				}
+			)
+		end,
 	},
 	-- Neorg
 	{
@@ -335,6 +435,20 @@ plugins = {
 				},
 			}
 		end,
+	},
+	-- ChatGPT Plugin
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+		require("chatgpt").setup()
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"folke/trouble.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
 	}
 }
 
