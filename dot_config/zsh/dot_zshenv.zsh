@@ -17,6 +17,8 @@ export LC_ALL=en_GB.UTF-8
 export LANGUAGE=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 
+export OPENAI_API_KEY=$(pass show keys/openai/idris_playground)
+
 AUTO_NOTIFY_IGNORE+=("vifm")
 AUTO_NOTIFY_IGNORE+=("zathura")
 AUTO_NOTIFY_IGNORE+=("chezmoi")
