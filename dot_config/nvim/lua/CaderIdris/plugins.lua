@@ -231,9 +231,12 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>hw"] = {":HopWord<CR>", "Hop to word"},
-					["<leader>ha"] = {":HopAnywhere<CR>", "Hop anywhere"},
-					["<leader>hl"] = {":HopLineStart<CR>", "Hop to a line"},
+					["<leader>h"] = {
+						name = "Hop",
+						w = {":HopWord<CR>", "Hop to word"},
+						a = {":HopAnywhere<CR>", "Hop anywhere"},
+						l = {":HopLineStart<CR>", "Hop to a line"},
+					}
 				}
 			)
 		end,
