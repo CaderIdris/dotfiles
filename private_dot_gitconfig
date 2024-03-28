@@ -1,0 +1,14 @@
+[user]
+	editor = nvim
+	name = Idris
+	email = 61825162+CaderIdris@users.noreply.github.com
+	username = CaderIdris
+	signingkey = CE276296C4FE0169!
+
+[credential]
+	helper = !pass-git-helper $@
+
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
