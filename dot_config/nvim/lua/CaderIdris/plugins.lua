@@ -441,7 +441,11 @@ plugins = {
 		"jackMort/ChatGPT.nvim",
 		event = "VeryLazy",
 		config = function()
-		require("chatgpt").setup()
+		require("chatgpt").setup(
+			{
+				api_key_cmd = "pass keys/openai/neovim_chatgpt",
+			}
+		)
 		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
