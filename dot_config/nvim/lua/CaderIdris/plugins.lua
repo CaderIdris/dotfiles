@@ -37,8 +37,6 @@ plugins = {
 	  }
 	},
 	{ "nvim-lua/plenary.nvim" },
-	-- Required by some plugins for symbols
-	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Fidget. Shows lsp progress
 	{
@@ -393,6 +391,30 @@ plugins = {
 				}
 			)
 		end,
+	},
+	-- Nvim-tmux navigation
+	{
+		'numToStr/Navigator.nvim',
+		config = function()
+			require('Navigator').setup(
+				{
+					auto_save = 'current',
+					disable_on_zoom = true
+				}
+			)
+		end,
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<A-h>"] = {":NavigatorLeft<CR>", "Navigate Left"},
+					["<A-j>"] = {":NavigatorDown<CR>", "Navigate Down"},
+					["<A-k>"] = {":NavigatorUp<CR>", "Navigate Up"},
+					["<A-l>"] = {":NavigatorRight<CR>", "Navigate Right"},
+				}
+			)
+		end,
+
 	},
 	-- Silicon
 	{

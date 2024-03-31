@@ -26,10 +26,15 @@ config.window_decorations = 'RESIZE'
 
 config.window_background_opacity = 1
 
+config.adjust_window_size_when_changing_font_size = false
+config.use_fancy_tab_bar = false
+
+config.unicode_version = 14
+
 wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if not overrides.window_background_opacity then
-    overrides.window_background_opacity = 0
+    overrides.window_background_opacity = 0.5
   else
     overrides.window_background_opacity = nil
   end
