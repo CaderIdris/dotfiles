@@ -19,10 +19,9 @@ lsp_servers = {
 	'dockerls',
 	'ruff_lsp',
 	'htmx',
-	'gleam'
+	--'gleam'
 }
 
-vim.g.coq_settings = { auto_start = 'shut-up' }
 
 local gruvbox_baby_toggle = function()
 	vim.g.gruvbox_baby_transparent_mode = not vim.g.gruvbox_baby_transparent_mode
@@ -47,16 +46,16 @@ plugins = {
 		},
 	},
 	-- Theme
-	--{
-	--	"ellisonleao/gruvbox.nvim",
-	--	lazy = false,
-	--	dependencies = { "norcalli/nvim-colorizer.lua" },
-	--	config = function()
-	--		require("gruvbox").setup()
-	--		vim.cmd('set background=dark')
-	--		vim.cmd('colorscheme gruvbox')
-	--	end,
-	--},
+--	{
+--		"ellisonleao/gruvbox.nvim",
+--		lazy = false,
+--		dependencies = { "norcalli/nvim-colorizer.lua" },
+--		config = function()
+--			require("gruvbox").setup()
+--			vim.cmd('set background=dark')
+--			vim.cmd('colorscheme gruvbox')
+--		end,
+--	},
 	{ "norcalli/nvim-colorizer.lua" },
 	{
 		'luisiacc/gruvbox-baby',
@@ -65,7 +64,10 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>ct"] =  {gruvbox_baby_toggle, "Toggle transparency"}
+					["<leader>c"] = {
+						name = "Colourscheme",
+						t = {gruvbox_baby_toggle, "Toggle transparency"}
+					}
 				}
 			)
 		end,
@@ -107,7 +109,7 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>fb"] = {":Neotree<CR>", "Open Neotree"}
+					["<leader>t"] = {":Neotree<CR>", "Open Neotree"}
 				}
 			)
 		end,
@@ -121,19 +123,22 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>ff"] = {":Telescope find_files<CR>", "Tscope: List files in cwd"},
-					["<leader>fg"] = {":Telescope git_files<CR>", "Tscope: Fuzzy search git files in curent repo"},
-					["<leader>fs"] = {":Telescope grep_string<CR>", "Tscope: Search for selected string in cwd"}, {mode = "v"},
-					["<leader>fl"] = {":Telescope live_grep<CR>", "Tscope: Search files in cwd"},
-					["<leader>hc"] = {":Telescope command_history<CR>", "Tscope: Search cmd history"},
-					["<leader>hf"] = {":Telescope oldfiles<CR>", "Tscope: Search file history"},
-					["<leader>tt"] = {":Telescope tags<CR>", "Tscope: Search tags"},
-					["<leader>vk"] = {":Telescope keymaps<CR>", "Tscope: Keymaps"},
-					["<leader>vo"] = {":Telescope vim_options<CR>", "Tscope: Vim options"},
-					["<leader>vr"] = {":Telescope registers<CR>", "Tscope: View registers"},
-					["<leader>vm"] = {":Telescope marks<CR>", "Tscope: View marks"},
-					["<leader>gc"] = {":Telescope git_commits<CR>", "Tscope: View git commits"},
-					["<leader>gb"] = {":Telescope git_branches<CR>", "Tscope: View git branches"},
+					["<Leader>f"] = {
+						name = "Telescope",
+						f = {":Telescope find_files<CR>", "Tscope: List files in cwd"},
+						g = {":Telescope git_files<CR>", "Tscope: Fuzzy search git files in curent repo"},
+						s = {":Telescope grep_string<CR>", "Tscope: Search for selected string in cwd"}, {mode = "v"},
+						l = {":Telescope live_grep<CR>", "Tscope: Search files in cwd"},
+						h = {":Telescope command_history<CR>", "Tscope: Search cmd history"},
+						o = {":Telescope oldfiles<CR>", "Tscope: Search file history"},
+						t = {":Telescope tags<CR>", "Tscope: Search tags"},
+						k = {":Telescope keymaps<CR>", "Tscope: Keymaps"},
+						v = {":Telescope vim_options<CR>", "Tscope: Vim options"},
+						r = {":Telescope registers<CR>", "Tscope: View registers"},
+						m = {":Telescope marks<CR>", "Tscope: View marks"},
+						c = {":Telescope git_commits<CR>", "Tscope: View git commits"},
+						x = {":Telescope git_branches<CR>", "Tscope: View git branches"},
+					}
 
 				}
 			)
@@ -175,7 +180,10 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>vd"] = {":DataViewer<CR>", "Open DataViewer"}
+					["<leader>v"] = {
+						name = "DataViewer",
+						d = {":DataViewer<CR>", "Open DataViewer"}
+					}
 				}
 			)
 		end,
@@ -191,7 +199,7 @@ plugins = {
 	},
 	{
 		"kylechui/nvim-surround",
-		lazy = false
+		event = "VeryLazy"
 	},
 
 	{
@@ -205,6 +213,21 @@ plugins = {
 		lazy = false
 	},
 
+	-- Split objects with Treesitter
+	{
+		'Wansmer/treesj',
+		config = function()
+			require('treesj').setup({})
+		end,
+		init = function()
+			local wk = require("which-key")
+			wk.register(
+				{
+					["<leader>j"] = {":TSJToggle<CR>", "Toggle multiline object"},
+				}
+			)
+		end,
+	},
 	-- Tagbar
 	{
 		"preservim/tagbar",
@@ -212,7 +235,7 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>wt"] = {":TagbarToggle<CR>", "Toggle Tagbar"},
+					["<leader>b"] = {":TagbarToggle<CR>", "Toggle Tagbar"},
 				}
 			)
 		end,
@@ -301,14 +324,17 @@ plugins = {
 	  'stevearc/dressing.nvim',
 	  opts = {},
 	},
-
+	-- Emoji and Nerdfont picker
 	{
 	    "ziontee113/icon-picker.nvim",
 		init = function()
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>ie"] = {":IconPickerNormal<CR>", "Add emoji"},
+					["<leader>i"] = {
+						name = "Icon Picker",
+						e = {":IconPickerNormal<CR>", "Add emoji"},
+					}
 				}
 			)
 		end,
@@ -316,7 +342,161 @@ plugins = {
 			require("icon-picker").setup({ disable_legacy_commands = true })
 		end
 	},
+	-- Completion and Snippets
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+	},
+	{
+		"andersevenrud/cmp-tmux"
+	},
+	{
+		"petertriho/cmp-git"
+	},
+	{
+		"hrsh7th/cmp-calc"
+	},
+	{
+		"ray-x/cmp-treesitter"
+	},
+	{
+		"lukas-reineke/cmp-under-comparator"
+	},
+	{
+		"hrsh7th/cmp-nvim-lsp-document-symbol"
+	},
+	{
+		"chrisgrieser/cmp-nerdfont"
+	},
+	{
+		"kdheepak/cmp-latex-symbols"
+	},
+	{
+		"saadparwaiz1/cmp_luasnip"
+	},
+	{
+		"hrsh7th/cmp-emoji"
+	},
+	{
+		"hrsh7th/cmp-nvim-lsp"
+	},
+	{
+		"hrsh7th/cmp-buffer"
+	},
+	{
+		"hrsh7th/cmp-path"
+	},
+	{
+		"hrsh7th/cmp-cmdline"
+	},
+	{
+		"micangl/cmp-vimtex"
+	},
+	{
+		"rafamadriz/friendly-snippets"
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		config = function()
+			local cmp = require("cmp")
+			cmp.setup(
+				{
+					snippet = {
+						expand = function(args)
+							require('luasnip').lsp_expand(args.body)
+						end,
+					},
+					sources = cmp.config.sources(
+						{
+							{ name = 'nvim_lsp' },
+							{ name = 'luasnip' },
+							{ name = 'treesitter' },
+							{ name = 'buffer' },
+							{ name = 'calc' },
+							{ name = 'latex_symbols' },
+							{ name = 'vimtex' },
+							{
+								name = 'tmux',
+								option = {
+									all_panes = false,
+									capture_history = false,
+								}
+							},
+							{ name = 'path' },
+							{ name = 'emoji' },
+							{ name = 'nerdfont' }
+						}
+					),
+					mapping = cmp.mapping.preset.insert(
+						{
+							["<Tab>"] = cmp.mapping.select_next_item(),
+							["<S-Tab>"] = cmp.mapping.select_prev_item(),
+							["<CR>"] = cmp.mapping.confirm({select = false})
+						}
+					),
+					sorting = {
+						comparators = {
+							cmp.config.compare.offset,
+							cmp.config.compare.exact,
+							cmp.config.compare.score,
+							require("cmp-under-comparator").under,
+							cmp.config.compare.kind,
+							cmp.config.compare.sort_text,
+							cmp.config.compare.length,
+							cmp.config.compare.order,
+						},
+					},
+				}
+			)
+			cmp.setup.filetype(
+				'gitcommit',
+				{
+					sources = cmp.config.sources(
+						{
+							{ name = 'git' },
+						}, {
+							{ name = 'buffer' },
+						}
+					)
+				}
+			)
 
+			cmp.setup.cmdline(
+				{ '/', '?' },
+				{
+					mapping = cmp.mapping.preset.cmdline(),
+					sources = {
+						{
+							{ name = 'nvim_lsp_document_symbol' }
+						},
+						{
+							{ name = 'buffer' }
+						}
+					}
+				}
+			)
+
+			cmp.setup.cmdline(
+				':',
+				{
+					mapping = cmp.mapping.preset.cmdline(),
+					sources = cmp.config.sources(
+						{
+							{ name = 'path' }
+						}, {
+							{ name = 'cmdline' }
+						}
+					),
+					matching = { disallow_symbol_nonprefix_matching = false }
+				}
+			)
+		end,
+	},
 	-- LSP
 	{
 		"williamboman/mason.nvim",
@@ -335,36 +515,28 @@ plugins = {
 		end,
 	},
 	{
-		"ms-jpq/coq_nvim",
-		branch = 'coq'
-	},
-	{
-		"ms-jpq/coq.artifacts",
-		branch = 'artifacts'
-	},
-	{
-		"ms-jpq/coq.thirdparty",
-		branch = '3p'
-	},
-	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			for _, server in ipairs(lsp_servers) do
-				if server:find('jedi_language_server', 1, true) then
-					require("lspconfig")[server].setup {
-						settings = {
-							require("coq").lsp_ensure_capabilities {
-								jedi = {
-									workspace = {
-										environmentPath = '~/.local/share/virtualenvs/datblygiad'
-									}
-								}
-							}
-						}
+--				if server:find('jedi_language_server', 1, true) then
+--					require("lspconfig")[server].setup {
+--						settings = {
+--							require("coq").lsp_ensure_capabilities {
+--								jedi = {
+--									workspace = {
+--										environmentPath = '~/.local/share/virtualenvs/datblygiad'
+--									}
+--								}
+--							}
+--						}
+--					}
+--				else
+				require("lspconfig")[server].setup(
+					{
+						--capabilities = require("cmp_nvim_lsp").default_capabilities()
 					}
-				else
-					require("lspconfig")[server].setup(require("coq").lsp_ensure_capabilities())
-				end
+				)
+				--end
 			end
 		end,
 	},
@@ -374,12 +546,6 @@ plugins = {
 			modes = {':', '/', '?'}
 		}
 	},
-	-- Snippets
-	{
-		"L3MON4D3/LuaSnip",
-		version = "v2.*",
-		build = "make install_jsregexp"
-	},
 	-- Neoformat
 	{
 		"sbdchd/neoformat",
@@ -387,7 +553,10 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>nf"] = {":Neoformat<CR>", "Neoformat"},
+					["<leader>n"] = {
+						name = "Neoformat",
+						f = {":Neoformat<CR>", "Neoformat"},
+					}
 				}
 			)
 		end,
@@ -414,7 +583,6 @@ plugins = {
 				}
 			)
 		end,
-
 	},
 	-- Silicon
 	{
@@ -432,29 +600,41 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>SC"] = {":Silicon<CR>", "Take Snapshot"}, {mode="v"},
+					["<leader>S"] = {
+						name = "Silicon",
+						c = {":Silicon<CR>", "Take Snapshot"}, {mode="v"},
+					}
 				}
 			)
 		end,
 	},
 	-- Neorg
 	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true
+	},
+	{
+		"pysan3/pathlib.nvim"
+	},
+	{
 		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "luarocks.nvim" },
+		lazy = false,
+		version = "*",
 		config = function()
 		require("neorg").setup {
-		load = {
-			["core.defaults"] = {}, -- Loads default behaviour
-			["core.concealer"] = {}, -- Adds pretty icons to your documents
-			["core.dirman"] = { -- Manages Neorg workspaces
-				config = {
-					workspaces = {
-						general = "~/Notes/General",
-						work = "~/Notes/Work",
-						phd = "~/Notes/PhD",
-					},
-					default_workspace = "phd"
+			load = {
+				["core.defaults"] = {}, -- Loads default behaviour
+				["core.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.dirman"] = { -- Manages Neorg workspaces
+					config = {
+						workspaces = {
+							general = "~/Notes/General",
+							work = "~/Notes/Work",
+							phd = "~/Notes/PhD",
+						},
+						default_workspace = "phd"
 						},
 					},
 				},

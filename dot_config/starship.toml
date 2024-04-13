@@ -1,5 +1,6 @@
 format = '(Duration: $cmd_duration)$line_break$shell $directory$sudo$git_status$git_metrics$fill$git_branch$python$rust$azure $line_break '
 add_newline = false
+command_timeout = 1500
 
 [character]
 format = " "

@@ -4,15 +4,23 @@ local function map(m, k, v, c)
 	vim.keymap.set(m, k, v, c)
 end
 
-map('n', '<Leader><Up>', 'zt')
-map('n', '<Leader><Down>', 'zb')
-map('n', '<Leader><Left>', 'zz')
-map('n', '<Leader><Right>', 'zz')
-
-map('n', '<A-j>', ':move +1<CR>')
-map('n', '<A-k>', ':move -2<CR>')
+local wk = require("which-key")
+wk.register(
+	{
+		["<leader>"] = {
+			["<Up>"] = {"zt", "Top of window to cursor"},
+			["<Down>"] = {"zb", "Bottom of window to cursor"},
+			["<Left>"] = {"zz", "Center of window to cursor"},
+			["<Right>"] = {"zz", "Center of window to cursor"},
+			x = {
+				name = "Diagnostics",
+				x = {function() vim.diagnostic.open_float() end, "Issue at cursor"},
+				w = {function() vim.diagnostic.setloclist() end, "All issues"},
+			}
+		}
+	}
+)
+map('n', '<A-J>', ':move +1<CR>')
+map('n', '<A-K>', ':move -2<CR>')
 map('x', '<A-j>', [[:move '>+1<CR>gv=gv']])
-map('x', '<A-k>', [[:move '<-2<CR>gv=gv]])
-
-map('n', '<Leader>xx', function() vim.diagnostic.open_float() end)
-map('n', '<Leader>xw', function() vim.diagnostic.setloclist() end)
+map('x', '<A-K>', [[:move '<-2<CR>gv=gv]])
