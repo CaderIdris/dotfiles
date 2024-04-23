@@ -19,6 +19,7 @@ lsp_servers = {
 	'dockerls',
 	'ruff_lsp',
 	'htmx',
+	'jinja_lsp'
 	--'gleam'
 }
 
