@@ -47,6 +47,7 @@ distfit = "*"
 tqdm = "*"
 neopyter = "*"
 kaleido = "*"
+youtube-transcript-api = "*"
 
 [dev-packages]
 

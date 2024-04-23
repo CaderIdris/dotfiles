@@ -3,5 +3,6 @@
 quote_raw=$(shuf -n 1 ~/.local/share/quotes/quotes.txt)
 IFS='|' read -rA quote_array <<< $quote_raw
 
-quote_string="\033[1;35m\"$quote_array[1]\"\033[0m - \e[3m$quote_array[2]\e[0m"
+quote_string="\033[0;30m\033[45m\"$quote_array[1]\"\033[0m - \033[0;30m\033[41m$quote_array[2]\033[0m"
 echo $quote_string
+
