@@ -57,7 +57,7 @@ a.nvim_create_autocmd(
     },
     {
         callback = function()
-		vim.diagnostic.open_float()
+		--vim.diagnostic.open_float()
         end
     }
 )

@@ -1,7 +1,7 @@
 lsp_servers = {
 	'bashls',
 	'cssls',
-	'html',
+	--'html',
 	'jsonls',
 	'arduino_language_server',
 	'eslint',
@@ -18,7 +18,7 @@ lsp_servers = {
 	'esbonio',
 	'dockerls',
 	'ruff_lsp',
-	'htmx',
+	--'htmx',
 	'jinja_lsp'
 	--'gleam'
 }
@@ -286,11 +286,18 @@ plugins = {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "VeryLazy",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = "all",
-				highlight = { enable = true },
-				indent    = { enable = true },
+				highlight = {
+					enable = true,
+					disable = { "html" }
+				},
+				indent    = {
+					enable = true,
+					disable = { "html" }
+				},
 			})
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
