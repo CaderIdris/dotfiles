@@ -36,6 +36,39 @@ plugins = {
 	  opts = {
 	  }
 	},
+	{
+		"rcarriga/nvim-notify",
+		event = "VeryLazy",
+		config = function()
+			require("notify").setup(
+				{
+					 background_colour = "#000000"
+				}
+			)
+		end,
+
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("noice").setup(
+				{
+					routes = {
+							{ filter = { event = "msg_show", find = "search hit" }, skip = true },
+					},
+					cmdline = {
+					      view = "cmdline",
+					},
+				}
+			)
+		end,
+	},
 	{ "nvim-lua/plenary.nvim" },
 
 	-- Fidget. Shows lsp progress
@@ -98,19 +131,34 @@ plugins = {
 
 	-- File tree
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		},
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup(
+				{
+					columns = {"icon", "permissions", "size", "mtime"},
+					delete_to_trash = true,
+					skip_confirm_for_simple_edits = false,
+					view_options = {
+						show_hidden = true
+					}
+				}
+			)
+		end,
 		init = function()
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>t"] = {":Neotree<CR>", "Open Neotree"}
+					["<leader>t"] = {":Oil<CR>", "Open Oil"}
+				}
+			)
+		end,
+	},
+	{
+		"lewis6991/satellite.nvim",
+		config = function()
+			require("satellite").setup(
+				{
+
 				}
 			)
 		end,
@@ -277,6 +325,21 @@ plugins = {
 			},
 			tabline = { lualine_a = { "tabs" } },
 		},
+		config = function()
+			require("lualine").setup(
+				{
+					sections = {
+						lualine_x = {
+							{
+								require("noice").api.statusline.mode.get,
+								cond = require("noice").api.statusline.mode.has,
+								color = { fg = "#ff9e64" },
+							},
+						},
+					},
+				}
+			)
+		end,
 	},
 
 	{
@@ -424,6 +487,7 @@ plugins = {
 							{ name = 'nvim_lsp' },
 							{ name = 'luasnip' },
 							{ name = 'treesitter' },
+							{ name = 'neorg' },
 							{ name = 'buffer' },
 							{ name = 'calc' },
 							{ name = 'latex_symbols' },
@@ -634,7 +698,17 @@ plugins = {
 		require("neorg").setup {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
+				["core.completion"] = {
+						config = {
+							engine = "nvim-cmp"
+						}
+					}, -- Completion behaviour
 				["core.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.summary"] = {
+						config = {
+
+						}
+					}, -- Generate a summary
 				["core.dirman"] = { -- Manages Neorg workspaces
 					config = {
 						workspaces = {
