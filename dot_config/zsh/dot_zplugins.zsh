@@ -10,4 +10,7 @@ znap source 'zsh-users/zsh-syntax-highlighting'
 znap source 'zsh-users/zsh-history-substring-search'
 znap source 'zsh-users/zsh-autosuggestions'
 znap source 'jeffreytse/zsh-vi-mode'
+znap source 'Aloxaf/fzf-tab'
 znap source 'MichaelAquilina/zsh-auto-notify'
+
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup

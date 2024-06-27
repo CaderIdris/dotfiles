@@ -16,15 +16,13 @@ ipywidgets = "*"
 spacy = "*"
 pyspark = "*"
 flake8 = "*"
-python-lsp-server = {extras = ["all"], version = "*"}
+python-lsp-server = {extras = ["all"] }
 shap = "*"
 influxdb-client = "*"
 statsmodels = "*"
 bambi = "*"
 xgboost = "*"
-jedi = "*"
 textblob = "*"
-hdbscan = "*"
 sentence-transformers = "*"
 umap-learn = "*"
 scikit-survival = "*"
@@ -35,12 +33,9 @@ safetensors = "*"
 torch = "*"
 torchvision = "*"
 torchaudio = "*"
-diffusers = {git = "git+https://github.com/huggingface/diffusers"}
-wfdb = "*"
 dash = "*"
 dash-bootstrap-components = "*"
 openpyxl = "*"
-dbcv = {git = "git+https://github.com/christopherjenness/DBCV"}
 clusteval = "*"
 openai = "*"
 distfit = "*"
@@ -48,6 +43,8 @@ tqdm = "*"
 neopyter = "*"
 kaleido = "*"
 youtube-transcript-api = "*"
+debugpy = "*"
+ruff = "*"
 
 [dev-packages]
 

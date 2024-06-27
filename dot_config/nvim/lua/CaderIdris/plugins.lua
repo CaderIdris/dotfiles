@@ -148,7 +148,8 @@ plugins = {
 			local wk = require("which-key")
 			wk.register(
 				{
-					["<leader>t"] = {":Oil<CR>", "Open Oil"}
+					["-"] = {":Oil<CR>", "Open Oil"},
+					--["<leader>-"] = {require("oil").toggle_float "Open Oil as floating window"},
 				}
 			)
 		end,
@@ -159,6 +160,99 @@ plugins = {
 			require("satellite").setup(
 				{
 
+				}
+			)
+		end,
+	},
+	-- Debugging and Testing
+--	{
+--		"mfussenegger/nvim-dap",
+--		dependencies = {
+--			"mfussenegger/nvim-dap-python",
+--			"rcarriga/nvim-dap-ui",
+--			"theHamsta/nvim-dap-virtual-text",
+--			"nvim-neotest/nvim-nio",
+--			"williamboman/mason.nvim",
+--		},
+--		config = function()
+--			local dap = require("dap")
+--			local ui = require("dapui")
+--
+--			ui.setup()
+--			require("dap-python").setup("~/.local/share/virtualenvs/datblygiad/bin/python")
+--			require("nvim-dap-virtual-text").setup()
+--			dap.listeners.before.attach.dapui_config = function()
+--			ui.open()
+--			end
+--			dap.listeners.before.launch.dapui_config = function()
+--			ui.open()
+--			end
+--			dap.listeners.before.event_terminated.dapui_config = function()
+--			ui.close()
+--			end
+--			dap.listeners.before.event_exited.dapui_config = function()
+--			ui.close()
+--			end
+--		end,
+--		init = function()
+--			local wk = require("which-key")
+--			local dap = require("dap")
+--			local ui = require("dapui")
+--			wk.register(
+--				{
+--					["<Leader>d"] = {
+--						name = "Dap me up",
+--						b = {dap.toggle_breakpoint, "Toggle breakpoint"},
+--						r = {dap.run_to_cursor, "Run to cursor"},
+--						["?"] = {function() ui.eval(nil, { enter = true }) end, "Evaluate variable"},
+--						["<F1>"] =  {dap.continue, "Continue"},
+--						["<F2>"] =  {dap.step_into, "Step into"},
+--						["<F3>"] =  {dap.step_over, "Step over"},
+--						["<F4>"] =  {dap.step_out, "Step out"},
+--						["<F5>"] =  {dap.step_back, "Step back"},
+--						["<F12>"] =  {dap.restart, "Restart"},
+--					}
+--				}
+--			)
+--		end,
+--	},
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-neotest/neotest-python",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter"
+		},
+		config = function()
+			require("neotest").setup(
+				{
+					adapters = {
+						require("neotest-python")(
+							{
+								runner="pytest",
+								python=".venv/bin/python",
+								args = {"--log-level", "DEBUG"}
+							}
+						)
+					}
+				}
+			)
+		end,
+		init = function()
+			local wk = require("which-key")
+			local nt = require("neotest")
+			wk.register(
+				{
+					["<Leader>t"] = {
+						name = "Neotest",
+						r = {function() nt.run.run() end, "Run single test"},
+						a = {function() nt.run.run(vim.fn.expand("%")) end, "Run all tests"},
+						--d = {function() nt.run.run({strategy = "dap"}) end, "Debug nearest test"},
+						s = {function() nt.run.stop() end, "Stop nearest test"},
+						j = {function() nt.run.attach() end, "Attach to nearest test"}
+					}
 				}
 			)
 		end,
@@ -210,6 +304,7 @@ plugins = {
 		"nvim-telescope/telescope-symbols.nvim",
 		lazy = false
 	},
+	-- Scroll smoothly
 	{
 		"karb94/neoscroll.nvim",
 		config = function ()
@@ -538,6 +633,17 @@ plugins = {
 				}
 			)
 
+			cmp.setup.filetype(
+				{'sql', 'mysql', 'plsql'},
+				{
+					sources = cmp.config.sources(
+						{
+							{ name = 'vim-dadbod-completion' },
+						}
+					)
+				}
+			)
+
 			cmp.setup.cmdline(
 				{ '/', '?' },
 				{
@@ -722,6 +828,14 @@ plugins = {
 				},
 			}
 		end,
+	},
+	-- SQL Queries
+	{
+		"tpope/vim-dadbod",
+		dependencies = {
+			"kristijanhusak/vim-dadbod-ui",
+			"kristijanhusak/vim-dadbod-completion"
+		}
 	},
 	-- ChatGPT Plugin
 	{

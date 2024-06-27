@@ -16,7 +16,8 @@ wk.register(
 				name = "Diagnostics",
 				x = {function() vim.diagnostic.open_float() end, "Issue at cursor"},
 				w = {function() vim.diagnostic.setloclist() end, "All issues"},
-			}
+			},
+			["<Enter>"] = {":noh<cr>", "Clear search highlighting"}
 		}
 	}
 )
