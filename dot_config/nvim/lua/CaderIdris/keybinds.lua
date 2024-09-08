@@ -5,20 +5,16 @@ local function map(m, k, v, c)
 end
 
 local wk = require("which-key")
-wk.register(
+wk.add(
 	{
-		["<leader>"] = {
-			["<Up>"] = {"zt", "Top of window to cursor"},
-			["<Down>"] = {"zb", "Bottom of window to cursor"},
-			["<Left>"] = {"zz", "Center of window to cursor"},
-			["<Right>"] = {"zz", "Center of window to cursor"},
-			x = {
-				name = "Diagnostics",
-				x = {function() vim.diagnostic.open_float() end, "Issue at cursor"},
-				w = {function() vim.diagnostic.setloclist() end, "All issues"},
-			},
-			["<Enter>"] = {":noh<cr>", "Clear search highlighting"}
-		}
+		{ "<leader><Down>", "zb", desc = "Bottom of window to cursor" },
+		{ "<leader><Enter>", ":noh<cr>", desc = "Clear search highlighting" },
+		{ "<leader><Left>", "zz", desc = "Center of window to cursor" },
+		{ "<leader><Right>", "zz", desc = "Center of window to cursor" },
+		{ "<leader><Up>", "zt", desc = "Top of window to cursor" },
+		{ "<leader>x", group = "Diagnostics" },
+		{ "<leader>xw", function() vim.diagnostic.setloclist() end, desc = "All issues" },
+		{ "<leader>xx", function() vim.diagnostic.open_float() end, desc = "Issue at cursor" },
 	}
 )
 map('n', '<A-J>', ':move +1<CR>')
