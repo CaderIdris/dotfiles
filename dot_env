@@ -1,4 +1,0 @@
-PIPENV_CUSTOM_VENV_NAME=datblygiad
-PYTHONPATH=$PYTHONPATH:$HOME/.local/share/virtualenvs/datblygiad/lib/python3.11/site-packages
-PYDEVD_DISABLE_FILE_VALIDATION=true
-PIPENV_PIPFILE=/var/home/idris/Containers/datblygiad/.pipenv/Pipfile

@@ -10,6 +10,8 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.opam/default/bin/"
 export PIPX_HOME=/opt/pipx
 export PIPX_BIN_DIR=/usr/local/bin
 
+export PIPENV_VENV_IN_PROJECT=1
+
 export AZURE_CONFIG_DIR="$HOME/.az/Empirisys"
 
 export LC_CTYPE=en_GB.UTF-8
