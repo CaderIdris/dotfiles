@@ -13,3 +13,4 @@
 
 [commit]
 	gpgsign = true
+	template = /var/home/idris/Containers/datblygiad//.config/git/commit_template
