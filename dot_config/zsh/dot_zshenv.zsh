@@ -19,8 +19,6 @@ export LC_ALL=en_GB.UTF-8
 export LANGUAGE=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 
-export OPENAI_API_KEY=$(pass show keys/openai/idris_playground)
-
 export AUTO_NOTIFY_ICON_SUCCESS="$HOME/.config/zsh/icons/celebrate.png"
 export AUTO_NOTIFY_ICON_FAILURE="$HOME/.config/zsh/icons/clown.png"
 export AUTO_NOTIFY_TITLE="%command"
