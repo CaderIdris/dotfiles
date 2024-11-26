@@ -17,10 +17,18 @@ lsp_servers = {
 	'taplo',
 	'esbonio',
 	'dockerls',
-	'ruff_lsp',
+	'ruff',
 	'htmx',
 	'jinja_lsp'
 	--'gleam'
+}
+
+vim.filetype.add {
+  extension = {
+    jinja = 'jinja',
+    jinja2 = 'jinja',
+    j2 = 'jinja',
+  },
 }
 
 return {

@@ -7,7 +7,7 @@ plugin_files = {
 	require('CaderIdris.plugins.oil'),
 	require('CaderIdris.plugins.tagbar'),
 	require('CaderIdris.plugins.nvim-tmux'),
-	require('CaderIdris.plugins.hop'),
+	require('CaderIdris.plugins.movement'),
 	require('CaderIdris.plugins.neorg'),
 	require('CaderIdris.plugins.cmp'),
 	require('CaderIdris.plugins.lsp'),
