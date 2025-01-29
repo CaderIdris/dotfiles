@@ -14,6 +14,7 @@ return {
 					-- disable = { "html" }
 				},
 			})
+			vim.api.nvim_set_hl(0, "@markup.link.latex", {link = "@constant"})
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
 		end,

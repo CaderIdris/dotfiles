@@ -1,9 +1,9 @@
 return {
 	{
-	  "folke/which-key.nvim",
-	  event = "VeryLazy",
-	  opts = {
-	  }
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+		}
 	},
 	{
 		"rcarriga/nvim-notify",
@@ -37,6 +37,20 @@ return {
 				}
 			)
 		end,
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = {
+			"nvim-lua/plenary"
+		},
+		opts = {
+			keywords = {
+				MARK = {
+					icon = "🪇 ",
+					color = "#B16286"
+				}
+			}
+		}
 	},
 	{
 		"j-hui/fidget.nvim",

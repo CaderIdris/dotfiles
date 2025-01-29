@@ -16,7 +16,6 @@ plugin_files = {
 	require('CaderIdris.plugins.neoformat'),
 	require('CaderIdris.plugins.silicon'),
 	require('CaderIdris.plugins.dadbod'),
-	require('CaderIdris.plugins.chatgippity'),
 	require('CaderIdris.plugins.iconpicker'),
 }
 
