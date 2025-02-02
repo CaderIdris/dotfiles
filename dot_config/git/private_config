@@ -5,8 +5,6 @@
 	username = CaderIdris
 	signingkey = CE276296C4FE0169!
 
-[credential]
-	helper = !pass-git-helper $@
 
 [init]
 	defaultBranch = main
