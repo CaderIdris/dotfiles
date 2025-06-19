@@ -1,0 +1,14 @@
+[user]
+	editor = nvim
+	name = 61825162+CaderIdris@users.noreply.github.com
+	email = 61825162+CaderIdris@users.noreply.github.com
+	username = CaderIdris
+	signingkey = CE276296C4FE0169!
+
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgsign = true
+	template = /home/idris/.config/git/commit_template
