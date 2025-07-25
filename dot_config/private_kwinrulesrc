@@ -1,0 +1,34 @@
+[414aaf3b-d92e-4574-b304-46c101cf2550]
+Description=Window settings for org.kde.konsole
+acceptfocusrule=2
+below=true
+belowrule=2
+desktops=\\0
+desktopsrule=2
+fsplevel=4
+fsplevelrule=2
+minsize=1920,1080
+minsizerule=2
+noborder=true
+noborderrule=2
+position=0,0
+positionrule=2
+screenrule=2
+size=2560,1600
+sizerule=2
+skippager=true
+skippagerrule=2
+skipswitcher=true
+skipswitcherrule=2
+skiptaskbar=true
+skiptaskbarrule=2
+title=KonsoleDesktopWidget — Konsole
+titlematch=1
+types=1
+wmclass=konsole org.kde.konsole
+wmclasscomplete=true
+wmclassmatch=1
+
+[General]
+count=1
+rules=414aaf3b-d92e-4574-b304-46c101cf2550

@@ -1,0 +1,31 @@
+[FileDialogSize]
+2 screens: Height=800
+2 screens: Width=1280
+
+[General]
+Days Meta Infos=30
+Save Meta Infos=true
+Show Full Path in Title=false
+Show Menu Bar=true
+Show Status Bar=true
+Show Tab Bar=true
+Show Url Nav Bar=true
+
+[MainWindow]
+2 screens: Height=1563
+2 screens: Width=1078
+2560x1600 screen: Height=1563
+2560x1600 screen: Width=2550
+3 screens: Height=1563
+3 screens: Width=2550
+
+[filetree]
+editShade=183,220,246
+listMode=false
+middleClickToClose=false
+shadingEnabled=true
+showCloseButton=false
+showFullPathOnRoots=false
+showToolbar=true
+sortRole=0
+viewShade=211,190,222

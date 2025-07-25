@@ -1,0 +1,7 @@
+[Daemon]
+Autolock=false
+Timeout=0
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=/home/idris/Pictures/BSOD.png
+PreviewImage=/home/idris/Pictures/BSOD.png

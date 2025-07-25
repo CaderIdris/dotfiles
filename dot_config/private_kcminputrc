@@ -1,0 +1,15 @@
+[Libinput][1386][768][Wacom Bamboo One S Pen]
+OutputArea=0,0,1,1.1141304347826086
+OutputName=eDP-2
+
+[Libinput][2362][628][PIXA3854:00 093A:0274 Mouse]
+PointerAcceleration=0.000
+PointerAccelerationProfile=1
+
+[Libinput][2362][628][PIXA3854:00 093A:0274 Touchpad]
+DisableWhileTyping=true
+PointerAccelerationProfile=1
+
+[Mouse]
+X11LibInputXAccelProfileFlat=true
+cursorTheme=Simp1e-Gruvbox-Dark

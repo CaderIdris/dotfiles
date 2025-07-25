@@ -1,0 +1,24 @@
+[DetailsMode]
+IconSize=80
+PreviewSize=16
+
+[ExtractDialog]
+2560x1600 screen: Height=1563
+2560x1600 screen: Width=1574
+3 screens: Height=480
+3 screens: Width=856
+DirHistory[$e]=$HOME/Downloads/
+
+[General]
+Version=202
+ViewPropsTimestamp=2025,1,10,22,41,31.48
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[Search]
+Location=Everywhere
