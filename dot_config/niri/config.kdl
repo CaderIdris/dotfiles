@@ -70,7 +70,7 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "eDP-1" {
+output "eDP-1" { // Laptop display
     // Uncomment this line to disable this output.
     // off
 
@@ -98,7 +98,27 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=0 y=0
+}
+
+output "DP-2" {  // Dell
+    mode "2560x1440@59.591"
+
+    scale 1
+
+    transform "270"
+
+    position x=-1440 y=0
+}
+
+output "DP-3" {  // Samsung
+    mode "2560x1440@143.998"
+
+    scale 1
+
+    transform "90"
+
+    position x=2560 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -114,7 +134,7 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "never"
+    center-focused-column "on-overflow"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -325,6 +345,14 @@ window-rule {
     open-floating true
 }
 window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"wezmix"#
+    open-floating true
+}
+
+window-rule {
     match app-id=r#"Pinentry-gtk"#
     open-floating true
 }
@@ -365,6 +393,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
     Ctrl+Shift+Escape hotkey-overlay-title="Open btop" { spawn "wezterm" "--config" "initial_rows=24" "--config" "initial_cols=80" "start" "--class" "weztop" "--" "btop"; }
+    Ctrl+Shift+M hotkey-overlay-title="Open wiremix" { spawn "wezterm" "--config" "initial_rows=48" "--config" "initial_cols=160" "start" "--class" "wezmix" "--" "wiremix"; }
     Mod+D hotkey-overlay-title="Run an Application: bemenu" { spawn "bemenu-run" "-i" "-p" "Run" "--binding" "vim" "--scrollbar" "always" "--counter" "always";}
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-C" "/home/idris/.config/swaylock/swaylock.conf"; }
 
