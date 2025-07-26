@@ -394,7 +394,7 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
     Ctrl+Shift+Escape hotkey-overlay-title="Open btop" { spawn "wezterm" "--config" "initial_rows=24" "--config" "initial_cols=80" "start" "--class" "weztop" "--" "btop"; }
     Ctrl+Shift+M hotkey-overlay-title="Open wiremix" { spawn "wezterm" "--config" "initial_rows=48" "--config" "initial_cols=160" "start" "--class" "wezmix" "--" "wiremix"; }
-    Mod+D hotkey-overlay-title="Run an Application: bemenu" { spawn "bemenu-run" "-i" "-p" "Run" "--binding" "vim" "--scrollbar" "always" "--counter" "always";}
+    Mod+D hotkey-overlay-title="Run an Application: bemenu" { spawn "rofi" "-modes" "drun,ssh,window,filebrowser" "-show" "drun";}
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-C" "/home/idris/.config/swaylock/swaylock.conf"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
