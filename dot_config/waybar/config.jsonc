@@ -1,0 +1,86 @@
+{
+	"layer": "top",
+	"modules-left": ["niri/workspaces"],
+	// "modules-center": ["niri/window"],
+	"modules-center": [
+		"cpu",
+		"clock",
+		"memory"
+	],
+	"modules-right": [
+		"privacy",
+		"tray",
+		"network",
+		"power-profiles-daemon",
+		"battery",
+		"pulseaudio/slider"
+	],
+	"sway/window": {
+		"max-length": 50
+	},
+	"battery": {
+		"format": "{capacity}% {icon}",
+		"full-at": 90,
+		"interval": 5,
+		"format-icons": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂" ],
+		"states": {
+			"warning": 30,
+			"critical": 15
+		}
+	},
+	"clock": {
+		"format": "{:%H:%M}",
+		"format-alt": "{:%a, %d. %b  %H:%M}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"week-pos": "right",
+			"on-scroll": 1,
+			"format": {
+				"months":     "<span color='#e7d7ad'><b>{}</b></span>",
+				"days":       "<span color='#dedede'><b>{}</b></span>",
+				"weeks":      "<span color='#98971a'><b>W{}</b></span>",
+				"weekdays":   "<span color='#fabd2f'><b>{}</b></span>",
+				"today":      "<span color='#cc241d'><b><u>{}</u></b></span>"
+			}
+		},
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "󰿖",
+			"balanced": "󱖤",
+			"power-saver": "󰒲"
+		}
+	},
+	"pulseaudio/slider": {
+		"min": 0,
+		"max": 100,
+		"orientation": "horizontal"
+	},
+	"network": {
+		"format": "{ifname}",
+		"format-ethernet": "󰈀 ",
+		"tooltip-format-ethernet": "{ifname}:\n{ipaddr}",
+		"format-wifi": "{icon} ",
+		"format-icons": [
+			"󰤟",
+			"󰤢",
+			"󰤥",
+			"󰤨"
+		]
+	},
+	"cpu": {
+		"format": "🏃 {usage}%",
+		"interval": 15
+	},
+	"memory": {
+		"format": "{percentage}% 🐏",
+		"interval": 15
+	}
+
+}
