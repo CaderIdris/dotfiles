@@ -1,6 +1,6 @@
 {
 	"layer": "top",
-	"modules-left": ["niri/workspaces"],
+	"modules-left": ["niri/workspaces", "niri/window"],
 	// "modules-center": ["niri/window"],
 	"modules-center": [
 		"cpu",
@@ -81,6 +81,14 @@
 	"memory": {
 		"format": "{percentage}% 🐏",
 		"interval": 15
+	},
+	"niri/window": {
+		"icon": true,
+		"icon-size": 16,
+		"separate-outputs": true
+	},
+	"taskbar": {
+		"format": " {icon} "
 	}
 
 }

@@ -56,8 +56,18 @@ input {
 		// middle-emulation
 	}
 
+	tablet {
+		map-to-output "eDP-1"
+	}
+
+	touch {
+		map-to-output "eDP-1"
+	}
+
 	// Uncomment this to make the mouse warp to the center of newly focused windows.
 	warp-mouse-to-focus
+
+	disable-power-key-handling
 
 	// Focus windows and outputs automatically when moving the mouse into them.
 	// Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
@@ -66,7 +76,7 @@ input {
 
 cursor {
 	// xcursor-theme "breeze_cursors"
-	xcursor-size 12
+	xcursor-size 28
 
 	hide-when-typing
 	hide-after-inactive-ms 1000
@@ -82,7 +92,7 @@ clipboard {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "eDP-1" { // Laptop display
+output "LG Display 0x06B1 0x002127A1" { // Surface 8 Display
 	// Uncomment this line to disable this output.
 	// off
 
@@ -92,10 +102,10 @@ output "eDP-1" { // Laptop display
 	// for the resolution.
 	// If the mode is omitted altogether or is invalid, niri will pick one automatically.
 	// Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-	mode "2560x1600@60.001"
+	mode "2880x1920@120.000"
 
 	// You can use integer or fractional scale, for example use 1.5 for 150% scale.
-	scale 1
+	scale 1.375
 
 	// Transform allows to rotate the output counter-clockwise, valid values are:
 	// normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -160,6 +170,14 @@ output "Technical Concepts Ltd TCL SMART TV 0x00011011" { // Office TV
 	scale 1
 
 	position x=-1440 y=0
+}
+
+output "Samsung Electric Company S34J55x H4LTB00914" { // Liv's Monitor
+
+	mode "3440x1440@49.987"
+	scale 1
+	position x=2560 y=0
+
 }
 
 output "Dell Inc. DELL U2722D 15P69H3" {  // Dell
@@ -376,7 +394,7 @@ animations {
 	// off
 
 	// Slow down all animations by this factor. Values below 1 speed them up instead.
-	slowdown 0.1
+	// slowdown 0.1
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -465,11 +483,11 @@ binds {
 	Mod+Return hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
 	Ctrl+Shift+Escape hotkey-overlay-title="Open btop" { spawn "wezterm" "--config" "initial_rows=24" "--config" "initial_cols=80" "start" "--class" "weztop" "--" "btop"; }
 	Ctrl+Shift+M hotkey-overlay-title="Open wiremix" { spawn "wezterm" "--config" "initial_rows=48" "--config" "initial_cols=160" "start" "--class" "wezmix" "--" "wiremix"; }
-	Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-modes" "drun,ssh,window,filebrowser" "-show" "drun" "-show-icons";}
+	Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-modes" "drun,ssh,window,filebrowser" "-show" "drun" "-show-icons"; }
+	Mod+E hotkey-overlay-title="Run an Application: nautilus" { spawn "nautilus"; }
 	Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-C" "/home/idris/.config/swaylock/swaylock.conf"; }
 
 	Mod+Alt+P hotkey-overlay-title="Power Menu" { spawn "rofi" "-show" "power-menu" "-modi" "\"power-menu:rofi-power-menu --choices logout/shutdown/reboot\""; }
-	Mod+e hotkey-overlay-title="Dolphin" { spawn "dolphin"; }
 
 	Mod+q hotkey-overlay-title="Toggle Waybar" { spawn "killall" "-SIGUSR1" "waybar"; }
 
