@@ -240,7 +240,13 @@ to {
 
 #window,
 #workspaces {
-	margin: 0 4px;
+	background-color: @c-black;
+	color: @c-milk;
+	margin: 0px 0px 0px 15px;
+	padding: 0px 5px;
+	border-radius: 10px;
+	min-height: 25px;
+	min-width: 25px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */

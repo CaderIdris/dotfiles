@@ -44,7 +44,7 @@
 				"weekdays":   "<span color='#fabd2f'><b>{}</b></span>",
 				"today":      "<span color='#cc241d'><b><u>{}</u></b></span>"
 			}
-		},
+		}
 	},
 	"power-profiles-daemon": {
 		"format": "{icon}",
@@ -76,11 +76,11 @@
 	},
 	"cpu": {
 		"format": "🏃 {usage}%",
-		"interval": 15
+		"interval": 5
 	},
 	"memory": {
 		"format": "{percentage}% 🐏",
-		"interval": 15
+		"interval": 5
 	},
 	"niri/window": {
 		"icon": true,

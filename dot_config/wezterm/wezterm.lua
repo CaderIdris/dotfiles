@@ -42,6 +42,11 @@ config.keys = {
       mods = 'CTRL|ALT',
       action = wezterm.action.EmitEvent 'toggle-opacity',
     },
+    {
+      key = 'L',
+      mods = 'CTRL',
+      action = wezterm.action.DisableDefaultAssignment
+    },
 }
 -- Taken from https://www.lua.org/pil/13.4.3.html
 function set_default(t, d)
